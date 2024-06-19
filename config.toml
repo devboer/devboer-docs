@@ -1,4 +1,4 @@
-baseURL = 'https://roken47.github.io/devboer-docs.git'
+baseURL = 'http://docs.devboer.com/'
 languageCode = 'en-us'
 title = 'dev Boer Docs'
-theme = 'PaperMod'
+theme = 'binario'
