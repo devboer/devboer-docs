@@ -1,31 +1,28 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>dev Boer Docs</title>
     <link>http://docs.devboer.com/</link>
     <description>Recent content on dev Boer Docs</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo -- 0.127.0</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 19 Jun 2024 01:01:28 -0500</lastBuildDate><atom:link href="http://docs.devboer.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 19 Jun 2024 01:01:28 -0500</lastBuildDate>
+    <atom:link href="http://docs.devboer.com/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Jellyfin LXC Setup</title>
       <link>http://docs.devboer.com/docs/jellyfin-lxc/</link>
       <pubDate>Wed, 19 Jun 2024 01:01:28 -0500</pubDate>
-      
       <guid>http://docs.devboer.com/docs/jellyfin-lxc/</guid>
       <description>Setting Jellyfin Up on Proxmox Metal install on unprivileged container Mount Points GPU Passthrough I do think this would be easier with a VM than an unprivileged container, however, I feel I had to with my limited resources.
 &amp;hellip; to be continued. I gotta figure out how to implement images with markdown or allowing html.</description>
     </item>
-    
     <item>
       <title>Helloworld</title>
       <link>http://docs.devboer.com/docs/helloworld/</link>
       <pubDate>Tue, 18 Jun 2024 22:56:16 -0500</pubDate>
-      
       <guid>http://docs.devboer.com/docs/helloworld/</guid>
       <description>Hello World echo &amp;#34;Hello World&amp;#34; console.log(&amp;#39;hello world&amp;#39;) I don&amp;rsquo;t know.. I&amp;rsquo;d like to share what I&amp;rsquo;ve learned through home-labbing!
 Hugo me the best!</description>
     </item>
-    
   </channel>
 </rss>
