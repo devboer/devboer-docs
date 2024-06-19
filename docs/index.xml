@@ -6,7 +6,17 @@
     <description>Recent content in Docs on dev Boer Docs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 18 Jun 2024 22:56:16 -0500</lastBuildDate><atom:link href="http://docs.devboer.com/docs/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 19 Jun 2024 01:01:28 -0500</lastBuildDate><atom:link href="http://docs.devboer.com/docs/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Jellyfin LXC Setup</title>
+      <link>http://docs.devboer.com/docs/jellyfin-lxc/</link>
+      <pubDate>Wed, 19 Jun 2024 01:01:28 -0500</pubDate>
+      
+      <guid>http://docs.devboer.com/docs/jellyfin-lxc/</guid>
+      <description>Setting Jellyfin Up on Proxmox Metal install on unprivileged container Mount Points GPU Passthrough I do think this would be easier with a VM than an unprivileged container, however, I feel I had to with my limited resources.
+&amp;hellip; to be continued. I gotta figure out how to implement images with markdown or allowing html.</description>
+    </item>
+    
     <item>
       <title>Helloworld</title>
       <link>http://docs.devboer.com/docs/helloworld/</link>
