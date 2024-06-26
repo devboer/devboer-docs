@@ -10,9 +10,9 @@
     <atom:link href="http://docs.devboer.com/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Hugo</title>
-      <link>http://docs.devboer.com/post/hugo/</link>
+      <link>http://docs.devboer.com/docs/hugo/</link>
       <pubDate>Wed, 19 Jun 2024 11:41:41 -0500</pubDate>
-      <guid>http://docs.devboer.com/post/hugo/</guid>
+      <guid>http://docs.devboer.com/docs/hugo/</guid>
       <description>Hugo This wasn&amp;rsquo;t a fun experience. I don&amp;rsquo;t know 100% what I am because I could burnt out&amp;hellip; I want a more complicated theme, but PaperMod and paper can do!
 I at least figured out github, github actions, and cloudflare pointing to github pages even with the help of a guide that left out some nuances.
 Nuance 1, I had to point this blog or docs site to blog.gh-pages-ip as A records and CNAME record to docs because it had to be different.</description>
