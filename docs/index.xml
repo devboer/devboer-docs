@@ -6,8 +6,15 @@
     <description>Recent content in Docs on dev Boer Docs</description>
     <generator>Hugo -- 0.127.0</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 19 Jun 2024 11:41:41 -0500</lastBuildDate>
+    <lastBuildDate>Wed, 28 Aug 2024 01:01:28 -0500</lastBuildDate>
     <atom:link href="http://docs.devboer.com/docs/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>GPU passthrough to LXC on PVE</title>
+      <link>http://docs.devboer.com/docs/bind-gpu-to-unprivileged-lxc/</link>
+      <pubDate>Wed, 28 Aug 2024 01:01:28 -0500</pubDate>
+      <guid>http://docs.devboer.com/docs/bind-gpu-to-unprivileged-lxc/</guid>
+      <description>Bind GPU to Unprivileged LXC Tutorials Used: TheOrangeOne.net YouTube Video using above tutorial Mount Storage GPU Matrix for Decode/Encode Reference Greg suggesting libnvidia-encode/decode on guestOS and learned to use -### corresponding with driver version Proxmox Setup Update Proxmox &amp;amp; Reboot Install pve-headers &amp;amp; build-essentials update-initramfs blacklist free nvidia driver download official nvidia driver chmod +x driver ./run install install 32-bit also ignore other prompts edit modules.d files for loading and conf create a rules file reboot verify driver is working with nvidia-smi also could try lshw -C display this will list driver it should say &amp;rsquo;nvidia&#39; Create CT with ubuntu compatible with jellyfin (18, 20, 22 not 22.</description>
+    </item>
     <item>
       <title>Hugo</title>
       <link>http://docs.devboer.com/docs/hugo/</link>
