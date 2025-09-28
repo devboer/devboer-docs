@@ -7,7 +7,7 @@
 <meta name="robots" content="index, follow">
 <title>Lxc Privilege Conversion | dev Boer Docs</title>
 <meta name="keywords" content="">
-<meta name="description" content="LXC id mapping adventure Goal Align privileged LXC Jellyfin container&rsquo;s permissions with unprivileged Servarr companion services.
+<meta name="description" content="Goal Align privileged LXC Jellyfin container&rsquo;s permissions with unprivileged Servarr companion services.
 Catalyst Since, I have introduced Servarr, I was having wonky issues with Jellyfin losing controls over its media. And, I learned privileged containers means same IDs as host, I had to remedy this pronto!
 So far, I have learned, PVE 9 doesn’t have un|shift pct command nor uidmappingshift (something like this) to convert LXC container from privileged to unprivileged.">
 <meta name="author" content="">
@@ -61,7 +61,7 @@ So far, I have learned, PVE 9 doesn’t have un|shift pct command nor uidmapping
   
 
 <meta property="og:title" content="Lxc Privilege Conversion" />
-<meta property="og:description" content="LXC id mapping adventure Goal Align privileged LXC Jellyfin container&rsquo;s permissions with unprivileged Servarr companion services.
+<meta property="og:description" content="Goal Align privileged LXC Jellyfin container&rsquo;s permissions with unprivileged Servarr companion services.
 Catalyst Since, I have introduced Servarr, I was having wonky issues with Jellyfin losing controls over its media. And, I learned privileged containers means same IDs as host, I had to remedy this pronto!
 So far, I have learned, PVE 9 doesn’t have un|shift pct command nor uidmappingshift (something like this) to convert LXC container from privileged to unprivileged." />
 <meta property="og:type" content="article" />
@@ -71,7 +71,7 @@ So far, I have learned, PVE 9 doesn’t have un|shift pct command nor uidmapping
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Lxc Privilege Conversion"/>
-<meta name="twitter:description" content="LXC id mapping adventure Goal Align privileged LXC Jellyfin container&rsquo;s permissions with unprivileged Servarr companion services.
+<meta name="twitter:description" content="Goal Align privileged LXC Jellyfin container&rsquo;s permissions with unprivileged Servarr companion services.
 Catalyst Since, I have introduced Servarr, I was having wonky issues with Jellyfin losing controls over its media. And, I learned privileged containers means same IDs as host, I had to remedy this pronto!
 So far, I have learned, PVE 9 doesn’t have un|shift pct command nor uidmappingshift (something like this) to convert LXC container from privileged to unprivileged."/>
 
@@ -102,12 +102,12 @@ So far, I have learned, PVE 9 doesn’t have un|shift pct command nor uidmapping
   "@type": "BlogPosting",
   "headline": "Lxc Privilege Conversion",
   "name": "Lxc Privilege Conversion",
-  "description": "LXC id mapping adventure Goal Align privileged LXC Jellyfin container\u0026rsquo;s permissions with unprivileged Servarr companion services.\nCatalyst Since, I have introduced Servarr, I was having wonky issues with Jellyfin losing controls over its media. And, I learned privileged containers means same IDs as host, I had to remedy this pronto!\nSo far, I have learned, PVE 9 doesn’t have un|shift pct command nor uidmappingshift (something like this) to convert LXC container from privileged to unprivileged.",
+  "description": "Goal Align privileged LXC Jellyfin container\u0026rsquo;s permissions with unprivileged Servarr companion services.\nCatalyst Since, I have introduced Servarr, I was having wonky issues with Jellyfin losing controls over its media. And, I learned privileged containers means same IDs as host, I had to remedy this pronto!\nSo far, I have learned, PVE 9 doesn’t have un|shift pct command nor uidmappingshift (something like this) to convert LXC container from privileged to unprivileged.",
   "keywords": [
     
   ],
-  "articleBody": "LXC id mapping adventure Goal Align privileged LXC Jellyfin container’s permissions with unprivileged Servarr companion services.\nCatalyst Since, I have introduced Servarr, I was having wonky issues with Jellyfin losing controls over its media. And, I learned privileged containers means same IDs as host, I had to remedy this pronto!\nSo far, I have learned, PVE 9 doesn’t have un|shift pct command nor uidmappingshift (something like this) to convert LXC container from privileged to unprivileged.\nI imagined this going smoother when using ChatGPT and web searches. I had a few challenges with my Jellyfin LXC being privileged and my servarr instances with unprivileged access.\nInside privileged container it had two files to remove ‘random’ and ‘urandom’ that were device types inside /var. (Correction?) Comment out specific lines in my container config file: lxc.idmap and cgroup access to GPU Backup container with the container ‘cleaned’ of the above Restore with unprivileged switch to 1 As I recall the challenges above were resolved when trying to restore the container. Each time I failed I restored it to privileged and fixed the requirements until I could restore it unprivileged.\nWithout any challenges, I was ready to complete the project… pct stop vzdump —dumpdir /path/to/backup\npct destroy or last for backup but need a different container id for restore\nA) pvesm status to see my storage options\nB) pct restore /path/to/backup —storage —unprivileged 1\nFrom here I had problems with jellyfin’s directories owned by ‘nobody’ and group ‘adm’ UID: 65534; GID: 4. And, this was the issue before I stumbled upon container conversion. Just now it is only on Jellyfin’s directories, funny enough.\nSo lots of trying things with help of searching the web and using ChatGPT and DeepSeek. I noticed nothing works, dead end reached inside container operations with “not permitted” errors.\nAnd so, I learned something about Proxmox, where it keeps its containers when mounted.\npct stop [!info] https://etldispatch.com/blog/reviving-a-broken-lxc-container/\n[!info] https://cloudspinx.com/convert-unprivileged-container-in-proxmox-to-privileged/\npct mount chown -R 100000:100000 /var/lib/lxc//rootfs/path/to/change\nThe six-digit UID:GID is the ID of root inside container that will convert to UID:GID of ‘0’.\nProblem solved!\nFrom here, I started container back up and “chowned” the directory to ‘jellyfin’\nJELLYFIN_DATA_DIR=\"/var/lib/jellyfin\" JELLYFIN_CONFIG_DIR=\"/etc/jellyfin\" JELLYFIN_LOG_DIR=\"/var/log/jellyfin\" JELLYFIN_CACHE_DIR=\"/var/cache/jellyfin\"\nNvidia device files are also owned by ‘nobody’. After much delibration and trial + error, I find this to not matter.\nI have an unprivileged container with proper uid:gid mapping from host to container and a working GPU binding. The GPU issue is something I’ll report on later when I learn more about what kernel issues I had with nvidia installer. This time around Nvidia installer ran without issue on the host like before.\nConnection complete, and ON to the next project! ",
-  "wordCount" : "450",
+  "articleBody": "Goal Align privileged LXC Jellyfin container’s permissions with unprivileged Servarr companion services.\nCatalyst Since, I have introduced Servarr, I was having wonky issues with Jellyfin losing controls over its media. And, I learned privileged containers means same IDs as host, I had to remedy this pronto!\nSo far, I have learned, PVE 9 doesn’t have un|shift pct command nor uidmappingshift (something like this) to convert LXC container from privileged to unprivileged.\nI imagined this going smoother when using ChatGPT and web searches. I had a few challenges with my Jellyfin LXC being privileged and my servarr instances with unprivileged access.\nInside privileged container it had two files to remove ‘random’ and ‘urandom’ that were device types inside /var. (Correction?) Comment out specific lines in my container config file: lxc.idmap and cgroup access to GPU Backup container with the container ‘cleaned’ of the above Restore with unprivileged switch to 1 As I recall the challenges above were resolved when trying to restore the container. Each time I failed I restored it to privileged and fixed the requirements until I could restore it unprivileged.\nWithout any challenges, I was ready to complete the project… pct stop vzdump —dumpdir /path/to/backup\npct destroy or last for backup but need a different container id for restore\nA) pvesm status to see my storage options\nB) pct restore /path/to/backup —storage —unprivileged 1\nFrom here I had problems with jellyfin’s directories owned by ‘nobody’ and group ‘adm’ UID: 65534; GID: 4. And, this was the issue before I stumbled upon container conversion. Just now it is only on Jellyfin’s directories, funny enough.\nSo lots of trying things with help of searching the web and using ChatGPT and DeepSeek. I noticed nothing works, dead end reached inside container operations with “not permitted” errors.\nAnd so, I learned something about Proxmox, where it keeps its containers when mounted.\npct stop [!info] https://etldispatch.com/blog/reviving-a-broken-lxc-container/\n[!info] https://cloudspinx.com/convert-unprivileged-container-in-proxmox-to-privileged/\npct mount chown -R 100000:100000 /var/lib/lxc//rootfs/path/to/change\nThe six-digit UID:GID is the ID of root inside container that will convert to UID:GID of ‘0’.\nProblem solved!\nFrom here, I started container back up and “chowned” the directory to ‘jellyfin’\nJELLYFIN_DATA_DIR=\"/var/lib/jellyfin\" JELLYFIN_CONFIG_DIR=\"/etc/jellyfin\" JELLYFIN_LOG_DIR=\"/var/log/jellyfin\" JELLYFIN_CACHE_DIR=\"/var/cache/jellyfin\" Nvidia device files are also owned by ‘nobody’. After much delibration and trial + error, I find this to not matter.\nI have an unprivileged container with proper uid:gid mapping from host to container and a working GPU binding. The GPU issue is something I’ll report on later when I learn more about what kernel issues I had with nvidia installer. This time around Nvidia installer ran without issue on the host like before.\nConnection complete, and ON to the next adventure! Next Up … I’d like to learn how to run my LXC container’s service rootless similar to Docker\n",
+  "wordCount" : "464",
   "inLanguage": "en",
   "datePublished": "2025-09-27T20:19:13-05:00",
   "dateModified": "2025-09-27T20:19:13-05:00",
@@ -182,8 +182,7 @@ So far, I have learned, PVE 9 doesn’t have un|shift pct command nor uidmapping
 
 </div>
   </header> 
-  <div class="post-content"><h1 id="lxc-id-mapping-adventure">LXC id mapping adventure<a hidden class="anchor" aria-hidden="true" href="#lxc-id-mapping-adventure">#</a></h1>
-<p><strong>Goal</strong> Align privileged LXC Jellyfin container&rsquo;s permissions with unprivileged Servarr companion services.</p>
+  <div class="post-content"><p><strong>Goal</strong> Align privileged LXC Jellyfin container&rsquo;s permissions with unprivileged Servarr companion services.</p>
 <p><strong>Catalyst</strong> Since, I have introduced Servarr, I was having wonky issues with Jellyfin losing controls over its media. And, I learned privileged containers means same IDs as host, I had to remedy this pronto!</p>
 <p>So far, I have learned, PVE 9 doesn’t have un|shift pct command nor uidmappingshift (something like this) to convert LXC container from privileged to unprivileged.</p>
 <p>I imagined this going smoother when using ChatGPT and web searches. I had a few challenges with my Jellyfin LXC being privileged and my servarr instances with unprivileged access.</p>
@@ -223,13 +222,17 @@ So far, I have learned, PVE 9 doesn’t have un|shift pct command nor uidmapping
 <p>The six-digit UID:GID is the ID of root inside container that will convert to UID:GID of ‘0’.</p>
 <p>Problem solved!</p>
 <p>From here, I started container back up and “chowned” the directory to ‘jellyfin’</p>
-<p>JELLYFIN_DATA_DIR=&quot;/var/lib/jellyfin&quot;
-JELLYFIN_CONFIG_DIR=&quot;/etc/jellyfin&quot;
-JELLYFIN_LOG_DIR=&quot;/var/log/jellyfin&quot;
-JELLYFIN_CACHE_DIR=&quot;/var/cache/jellyfin&quot;</p>
+<ul>
+<li>JELLYFIN_DATA_DIR=&quot;/var/lib/jellyfin&quot;</li>
+<li>JELLYFIN_CONFIG_DIR=&quot;/etc/jellyfin&quot;</li>
+<li>JELLYFIN_LOG_DIR=&quot;/var/log/jellyfin&quot;</li>
+<li>JELLYFIN_CACHE_DIR=&quot;/var/cache/jellyfin&quot;</li>
+</ul>
 <p>Nvidia device files are also owned by ‘nobody’. After much delibration and trial + error, I find this to not matter.</p>
 <p>I have an unprivileged container with proper uid:gid mapping from host to container and a working GPU binding. The GPU issue is something I&rsquo;ll report on later when I learn more about what kernel issues I had with nvidia installer. This time around Nvidia installer ran without issue on the host like before.</p>
-<h3 id="connection-complete-and-on-to-the-next-project">Connection complete, and ON to the next project!<a hidden class="anchor" aria-hidden="true" href="#connection-complete-and-on-to-the-next-project">#</a></h3>
+<h3 id="connection-complete-and-on-to-the-next-adventure">Connection complete, and ON to the next adventure!<a hidden class="anchor" aria-hidden="true" href="#connection-complete-and-on-to-the-next-adventure">#</a></h3>
+<h2 id="next-up-">Next Up &hellip;<a hidden class="anchor" aria-hidden="true" href="#next-up-">#</a></h2>
+<p><em>I&rsquo;d like to learn how to run my LXC container&rsquo;s service rootless similar to Docker</em></p>
 
 
   </div>

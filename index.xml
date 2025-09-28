@@ -13,7 +13,7 @@
       <link>http://docs.devboer.com/docs/lxc-privilege-conversion/</link>
       <pubDate>Sat, 27 Sep 2025 20:19:13 -0500</pubDate>
       <guid>http://docs.devboer.com/docs/lxc-privilege-conversion/</guid>
-      <description>LXC id mapping adventure Goal Align privileged LXC Jellyfin container&amp;rsquo;s permissions with unprivileged Servarr companion services.
+      <description>Goal Align privileged LXC Jellyfin container&amp;rsquo;s permissions with unprivileged Servarr companion services.
 Catalyst Since, I have introduced Servarr, I was having wonky issues with Jellyfin losing controls over its media. And, I learned privileged containers means same IDs as host, I had to remedy this pronto!
 So far, I have learned, PVE 9 doesn’t have un|shift pct command nor uidmappingshift (something like this) to convert LXC container from privileged to unprivileged.</description>
     </item>
