@@ -2,7 +2,3 @@ baseURL = 'http://docs.devboer.com/'
 languageCode = 'en-us'
 title = 'dev Boer Docs'
 theme = 'PaperMod'
-params:
-  homeInfoParams:
-    Title: Hi there wave
-    Content: Noting my adventures running a home server
