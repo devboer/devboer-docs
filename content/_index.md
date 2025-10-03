@@ -23,6 +23,6 @@ This site documents my learning journey—what I’ve built, what I’ve learned
 {{< /column >}}
 
 {{< column >}}
-![diy](https://github.com/devboer/dev.portfolio/blob/main/assets/images/logo.png?raw=true)
+![devboer logo](https://github.com/devboer/dev.portfolio/blob/main/assets/images/logo.png?raw=true)
 {{< /column >}}
 {{< /block >}}

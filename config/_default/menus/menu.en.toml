@@ -12,7 +12,7 @@
 [[main]]
   name = "Guides"
   weight = 2
-  url = "tutorials/"
+  url = "guides/"
 
 [[main]]
   name = "Profile"

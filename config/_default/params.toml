@@ -29,7 +29,7 @@ otherSearchableFields = [
 
 # Defaults to true if not set
 # Enable copyRight Footer Stamp. Takes in attribution
-enableCopyright = false
+enableCopyright = true
 
 # search
 [search]
@@ -55,5 +55,5 @@ url = "https://github.com/devboer/devboer-docs"
 # optional
 # attribution. Feel free to delete this
 [author]
-name = "Weru"
-url = "https://neuralvibes.com/author/"
+name = "Austin"
+url = "https://devboer.com"
