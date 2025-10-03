@@ -9,22 +9,28 @@
 <link rel="mask-icon" href='https://docs.devboer.com/favicons/safari-pinned-tab.svg' color="#004750">
 <link rel="shortcut icon" href='https://docs.devboer.com/favicons/favicon.ico'>
 <meta name="msapplication-config" content='https://docs.devboer.com/favicons/browserconfig.xml'>
-<title>Templates | devBoer Labs Documentation</title><meta property="og:url" content="https://docs.devboer.com/tags/templates/">
+<title>Lab Docs | devBoer Labs Documentation</title><meta property="og:url" content="https://docs.devboer.com/docs/lab/">
   <meta property="og:site_name" content="devBoer Labs Documentation">
-  <meta property="og:title" content="Templates">
+  <meta property="og:title" content="Lab Docs">
+  <meta property="og:description" content="Welcome to the pages where I will share my computer labbing journey! I fear sharing duplicate information and hopeful that I can be helpful because maybe you&#39;ll like my interpertations.
+Get started now">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="website">
 
-  <meta itemprop="name" content="Templates">
-  <meta itemprop="datePublished" content="2014-04-02T00:00:00+00:00">
+  <meta itemprop="name" content="Lab Docs">
+  <meta itemprop="description" content="Welcome to the pages where I will share my computer labbing journey! I fear sharing duplicate information and hopeful that I can be helpful because maybe you&#39;ll like my interpertations.
+Get started now">
   <meta itemprop="dateModified" content="2025-10-03T03:22:21+00:00">
+  <meta itemprop="wordCount" content="33">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Templates">
+  <meta name="twitter:title" content="Lab Docs">
+  <meta name="twitter:description" content="Welcome to the pages where I will share my computer labbing journey! I fear sharing duplicate information and hopeful that I can be helpful because maybe you&#39;ll like my interpertations.
+Get started now">
 
 <link rel="stylesheet" href="https://docs.devboer.com/css/styles.4b3745ac57cf6dd871f07bb5872ccf7fe2a524e1620900c4aa251c2492ba6c8e292dbddb2f2ccfe32cf24db99a75587e79d6f922a06787ba287e4a38bec38dd7.css" integrity="sha512-SzdFrFfPbdhx8Hu1hyzPf&#43;KlJOFiCQDEqiUcJJK6bI4pLb3bLyzP4yzyTbmadVh&#43;edb5IqBnh7oofko4vsON1w==">
 
 </head>
-<body class="page-term" id="pagetop">
+<body class="page-section" id="pagetop">
   <header class="nav_header">
 <nav class="wrap nav menu">
 	<a href='https://docs.devboer.com/' class="nav_brand">
@@ -44,7 +50,7 @@
 </svg>
     </label>
     
-    <input type="search" class="search_field  standardize-input" placeholder="Search tags" id="find" autocomplete="off" data-scope='tags'>
+    <input type="search" class="search_field  standardize-input" placeholder="Search docs" id="find" autocomplete="off" data-scope='docs'>
     <div class="search_results results"></div>
   </div>
 		</li>
@@ -76,25 +82,214 @@
 </nav>
 
   </header>
-  <div class="main wrap pt-4">
-      <div class="content">
-<div class="wrap pt-2 mt-2">
-  <article class="article mb-2">
-    <a href="https://docs.devboer.com/blog/goisforlovers/"  class=grid-reverse >
-      <div class="article_thumb" style="background-image: url(https://docs.devboer.com/images/images/artist.jpg)"></div>
-      <div class="article_meta  center_y ">
-        <div class="post_date">April 02, 2014</div>
-        <h3 class="article_title">(Hu)go Template Primer</h3>
-        <div class="article_excerpt  visible ">
-          <p><p>Hugo uses the excellent <a href="https://golang.org/">Go</a> <a href="https://golang.org/pkg/html/template/">html/template</a> library for
-its template engine. It is an extremely …</p></p>
-        </div>
-      </div>
-    </a>
-  </article><div class="grid-2 article_showcase">
+  <div class="main wrap pt-4"><div class="grid-auto"><aside class="aside menu">
+  <div>
+    <label class="aside_toggle toggle" title='Docs Menu' role="button">Docs Menu <svg class="icon icon_carly">
+  <use href="#carly"></use>
+</svg></label>
+  </div>
+  <section class="section aside_inner">
+    <h2 class="section_title"><a  href="https://docs.devboer.com/docs/" class="group">devBoer Labs Docs&#39;</a></h2>
+      <section class="" id="docs-devboer-labs-docs">
+  <section class="section aside_inner">
+    <h2 class="section_title"><a  href="https://docs.devboer.com/docs/compose/" class="group">Compose Docs</a></h2>
+      <section class="" id="docs-compose-docs">
+        <h3 class="section_link"><a id="docs-install-theme" href="https://docs.devboer.com/docs/compose/install-theme/">Install theme</a></h3>
+        <nav id="toc-install-theme">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+      </ul>
+    </li>
+    <li><a href="#run-your-site-with-compose-theme">Run your site with compose theme</a>
+      <ul>
+        <li><a href="#option-1-my-favorite">Option 1 (my favorite)</a></li>
+        <li><a href="#option-2-recommended">Option 2 (recommended)</a></li>
+        <li><a href="#option-3-great-for-testing-quickly">Option 3 (Great for testing quickly)</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+        <h3 class="section_link"><a id="docs-use-tinaio-cms" href="https://docs.devboer.com/docs/compose/use-tina-cms/">Use Tina.io CMS</a></h3>
+        <nav id="toc-use-tina-io-cms">
+  <ul>
+    <li><a href="#prerequisites-">Prerequisites !!</a>
+      <ul>
+        <li><a href="#requirement-1--a-tinaio-account">Requirement 1 : A Tina.io account</a></li>
+        <li><a href="#requirement-2-a-netlify-account-optional">Requirement 2: A Netlify account <em>(optional)</em></a></li>
+        <li><a href="#step-1--fork-or-clone-compose-theme">Step 1 : Fork or Clone Compose theme</a></li>
+        <li><a href="#step-2--add-your-repository-in-tina-cms">Step 2 : Add your repository in Tina CMS</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+        <h3 class="section_link"><a id="docs-content-organization" href="https://docs.devboer.com/docs/compose/organize-content/">Content organization</a></h3>
+        <nav id="toc-content-organization">
+  <ul>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#documentation">Documentation</a></li>
+            <li><a href="#home-page">Home Page</a></li>
+            <li><a href="#other-pages">Other pages</a></li>
+            <li><a href="#does-this-theme-support-blogging-function">Does this theme support blogging function?</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+        <h3 class="section_link"><a id="docs-shortcodes" href="https://docs.devboer.com/docs/compose/shortcodes/">Shortcodes</a></h3>
+        <nav id="toc-shortcodes">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#block">Block</a></li>
+        <li><a href="#column">Column</a></li>
+        <li><a href="#youtube-video">Youtube Video</a>
+          <ul>
+            <li><a href="#lite-youtube">Lite YouTube</a></li>
+          </ul>
+        </li>
+        <li><a href="#button">Button</a></li>
+        <li><a href="#picture">Picture</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#tabs">Tab(s)</a></li>
+        <li><a href="#tip">Tip</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+        <h3 class="section_link"><a id="docs-search-function" href="https://docs.devboer.com/docs/compose/search/">Search Function</a></h3>
+        <nav id="toc-search-function">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#1-passive-search">1. Passive search</a></li>
+        <li><a href="#2-live-search">2. Live search</a></li>
+        <li><a href="#customize-search-feedback-labels">Customize search feedback labels</a></li>
+        <li><a href="#what-is-a-valid-search-query">What is a valid search query</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+        <h3 class="section_link"><a id="docs-mermaid" href="https://docs.devboer.com/docs/compose/mermaid/">Mermaid</a></h3>
+        <nav id="toc-mermaid">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#sequence-diagrams">Sequence Diagrams</a></li>
+        <li><a href="#flow-charts">Flow Charts</a></li>
+        <li><a href="#graphs">Graphs</a></li>
+        <li><a href="#class-diagram">Class Diagram</a></li>
+        <li><a href="#state-diagram">State Diagram</a></li>
+        <li><a href="#relationship-diagrams">Relationship Diagrams</a></li>
+        <li><a href="#user-journey">User Journey</a></li>
+        <li><a href="#gantt">Gantt</a></li>
+        <li><a href="#pie-chart">Pie Chart</a></li>
+        <li><a href="#mindmap">Mindmap</a></li>
+        <li><a href="#timeline">Timeline</a></li>
+        <li><a href="#gitgraph">Gitgraph</a></li>
+        <li><a href="#requirement-diagram">Requirement Diagram</a></li>
+        <li><a href="#c4c-diagram">C4C Diagram</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+        <h3 class="section_link"><a id="docs-graphs-charts--dynamic-tables" href="https://docs.devboer.com/docs/compose/graphs-charts-tables/">Graphs, charts &amp; dynamic tables</a></h3>
+        <nav id="toc-graphs-charts-dynamic-tables">
+  <ul>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#show-a-pie-doughnut--bar-chart-at-once">Show a pie, doughnut &amp; bar chart at once</a></li>
+            <li><a href="#show-table-at-once"><strong>Show Table at once</strong></a></li>
+            <li><a href="#show-only-a-pie-and-a-doughnut-chart">Show only a pie and a doughnut chart</a></li>
+            <li><a href="#show-table-with-filter">Show table with filter</a></li>
+            <li><a href="#show-table-only">Show table only</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+        <h3 class="section_link"><a id="docs-customize-layouts--components" href="https://docs.devboer.com/docs/compose/customize/">Customize layouts &amp; components</a></h3>
+        <nav id="toc-customize-layouts-components">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#shortcodes-modifiers">Shortcodes modifiers</a>
+          <ul>
+            <li><a href="#grid">Grid</a></li>
+            <li><a href="#spacing">Spacing</a></li>
+          </ul>
+        </li>
+        <li><a href="#how-do-i-disable-dark-mode">How do I disable dark mode?</a></li>
+        <li><a href="#how-do-i-change-the-theme-color">How do I change the theme color?</a></li>
+        <li><a href="#how-can-i-change-the-address-bar-color-on-mobile-devices">How can I change the address bar color on mobile devices?</a></li>
+        <li><a href="#how-do-i-add-custom-styles-scripts-meta-tags-etc">How do I add custom styles, scripts, meta tags e.t.c</a></li>
+        <li><a href="#i-want-to-add-custom-sass-or-js">I want to add custom SASS or JS</a></li>
+        <li><a href="#how-to-change-site-favicon">How to change site favicon</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+        <h3 class="section_link"><a id="docs-leverage-github-actions" href="https://docs.devboer.com/docs/compose/github-actions/">Leverage Github actions</a></h3>
+        <nav id="toc-leverage-github-actions">
+  <ul>
+    <li><a href="#aws-ci">AWS CI</a></li>
+    <li><a href="#algolia-ci">Algolia CI</a></li>
+  </ul>
+</nav>
+      </section>
+  </section>
+  <section class="section aside_inner">
+    <h2 class="section_title active"><a  href="https://docs.devboer.com/docs/lab/" class="group">Lab Docs</a></h2>
+      <section class="" id="docs-lab-docs">
+        <h3 class="section_link"><a id="docs-lxc-privilege-conversion" href="https://docs.devboer.com/docs/lab/lxc-privilege-conversion/">Lxc Privilege Conversion</a></h3>
+        <nav id="toc-lxc-privilege-conversion">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#without-any-challenges-i-was-ready-to-complete-the-project">Without any challenges, I was ready to complete the project...</a></li>
+        <li><a href="#connection-complete-and-on-to-the-next-adventure">Connection complete, and ON to the next adventure!</a></li>
+      </ul>
+    </li>
+    <li><a href="#next-up-">Next Up ...</a></li>
+  </ul>
+</nav>
+        <h3 class="section_link"><a id="docs-gpu-passthrough-to-lxc-on-pve" href="https://docs.devboer.com/docs/lab/bind-gpu-to-unprivileged-lxc/">GPU passthrough to LXC on PVE</a></h3>
+        <nav id="toc-gpu-passthrough-to-lxc-on-pve">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#tutorials-used">Tutorials Used:</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+      </section>
+  </section>
+      </section>
+  </section>
+</aside>
+
+  <main class="content">
+    <h1>Lab Docs</h1><p>Welcome to the pages where I will share my computer labbing journey! I fear sharing duplicate information and hopeful that I can be helpful because maybe you'll like my interpertations.</p>
+<a href="./helloworld.md" class="button">Get started now</a>
+
+
+    <div class="pager pager_lean">
+  
+
+  
 </div>
+  </main>
 </div>
-      </div></div><script>
+</div><script>
 
 const copy_text = 'Copy';
 const copied_text = 'Copied';
