@@ -9,48 +9,47 @@
 <link rel="mask-icon" href='https://docs.devboer.com/favicons/safari-pinned-tab.svg' color="#004750">
 <link rel="shortcut icon" href='https://docs.devboer.com/favicons/favicon.ico'>
 <meta name="msapplication-config" content='https://docs.devboer.com/favicons/browserconfig.xml'>
-<title>devBoer Labs Docs&#39; | devBoer Labs Documentation</title><meta property="og:url" content="https://docs.devboer.com/docs/">
+<title>GPU passthrough to LXC on PVE | devBoer Labs Documentation</title><meta property="og:url" content="https://docs.devboer.com/guides/lxc-guides/bind-gpu-to-unprivileged-lxc/">
   <meta property="og:site_name" content="devBoer Labs Documentation">
-  <meta property="og:title" content="devBoer Labs Docs&#39;">
-  <meta property="og:description" content="Hi, I’m Austin (aka devboer). I learned front-end web development at Kenzie Academy, but I’ll be honest—while I can wrangle CSS when I need to, it’s not my favorite part. My real enjoyment comes from coding logic, solving tricky problems, and making things work under the hood.
-Over time, I’ve expanded into self-hosting services on Proxmox, building a homelab where I can experiment, break things, and fix them again. That hands-on tinkering started years ago when I became the family’s unofficial IT support, and it taught me how to communicate solutions clearly while actually getting stuff done.">
+  <meta property="og:title" content="GPU passthrough to LXC on PVE">
+  <meta property="og:description" content="Bind GPU to Unprivileged LXC Tutorials Used: TheOrangeOne.net YouTube Video using above tutorial Mount Storage GPU Matrix for Decode/Encode Reference Greg suggesting libnvidia-encode/decode on guestOS and learned to use -### corresponding with driver version Proxmox Setup Update Proxmox &amp; Reboot Install pve-headers &amp; build-essentials update-initramfs blacklist free nvidia driver download official nvidia driver chmod &#43;x driver ./run install install 32-bit also ignore other prompts edit modules.d files for loading and conf create a rules file reboot verify driver is working with nvidia-smi also could try lshw -C display this will list driver it should say &#39;nvidia&#39; Create CT with ubuntu compatible with jellyfin (18, 20, 22 not 22.10 work) Do not start CT on creation Edit CT conf file with # Allow cgroup access lxc.cgroup.devices.allow: c 195:* rwm lxc.cgroup.devices.allow: c 243:* rwm # Pass through device files lxc.mount.entry: /dev/nvidia0 dev/nvidia0 none bind,optional,create=file lxc.mount.entry: /dev/nvidiactl dev/nvidiactl none bind,optional,create=file lxc.mount.entry: /dev/nvidia-uvm dev/nvidia-uvm none bind,optional,create=file lxc.mount.entry: /dev/nvidia-modeset dev/nvidia-modeset none bind,optional,create=file lxc.mount.entry: /dev/nvidia-uvm-tools dev/nvidia-uvm-tools none bind,optional,create=file [!Note]
+==&#39;cgroup access&#39;== part corresponds with the character files below in ==&#39;device files&#39;==
+&#34;195:*&#34; is using a wildcard for the device files. You can also write in this number too.
+Also you can write in more IDs if you notice it changing on reboots to make certain you don&#39;t lose passthrough access.
+Find these IDs using ls -l /dev/nv* and ignore &#39;caps&#39; files.">
   <meta property="og:locale" content="en">
-  <meta property="og:type" content="website">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="guides">
+    <meta property="article:published_time" content="2024-08-28T01:01:28-05:00">
+    <meta property="article:modified_time" content="2025-10-03T04:11:33+00:00">
 
-  <meta itemprop="name" content="devBoer Labs Docs&#39;">
-  <meta itemprop="description" content="Hi, I’m Austin (aka devboer). I learned front-end web development at Kenzie Academy, but I’ll be honest—while I can wrangle CSS when I need to, it’s not my favorite part. My real enjoyment comes from coding logic, solving tricky problems, and making things work under the hood.
-Over time, I’ve expanded into self-hosting services on Proxmox, building a homelab where I can experiment, break things, and fix them again. That hands-on tinkering started years ago when I became the family’s unofficial IT support, and it taught me how to communicate solutions clearly while actually getting stuff done.">
+  <meta itemprop="name" content="GPU passthrough to LXC on PVE">
+  <meta itemprop="description" content="Bind GPU to Unprivileged LXC Tutorials Used: TheOrangeOne.net YouTube Video using above tutorial Mount Storage GPU Matrix for Decode/Encode Reference Greg suggesting libnvidia-encode/decode on guestOS and learned to use -### corresponding with driver version Proxmox Setup Update Proxmox &amp; Reboot Install pve-headers &amp; build-essentials update-initramfs blacklist free nvidia driver download official nvidia driver chmod &#43;x driver ./run install install 32-bit also ignore other prompts edit modules.d files for loading and conf create a rules file reboot verify driver is working with nvidia-smi also could try lshw -C display this will list driver it should say &#39;nvidia&#39; Create CT with ubuntu compatible with jellyfin (18, 20, 22 not 22.10 work) Do not start CT on creation Edit CT conf file with # Allow cgroup access lxc.cgroup.devices.allow: c 195:* rwm lxc.cgroup.devices.allow: c 243:* rwm # Pass through device files lxc.mount.entry: /dev/nvidia0 dev/nvidia0 none bind,optional,create=file lxc.mount.entry: /dev/nvidiactl dev/nvidiactl none bind,optional,create=file lxc.mount.entry: /dev/nvidia-uvm dev/nvidia-uvm none bind,optional,create=file lxc.mount.entry: /dev/nvidia-modeset dev/nvidia-modeset none bind,optional,create=file lxc.mount.entry: /dev/nvidia-uvm-tools dev/nvidia-uvm-tools none bind,optional,create=file [!Note]
+==&#39;cgroup access&#39;== part corresponds with the character files below in ==&#39;device files&#39;==
+&#34;195:*&#34; is using a wildcard for the device files. You can also write in this number too.
+Also you can write in more IDs if you notice it changing on reboots to make certain you don&#39;t lose passthrough access.
+Find these IDs using ls -l /dev/nv* and ignore &#39;caps&#39; files.">
+  <meta itemprop="datePublished" content="2024-08-28T01:01:28-05:00">
   <meta itemprop="dateModified" content="2025-10-03T04:11:33+00:00">
-  <meta itemprop="wordCount" content="119">
+  <meta itemprop="wordCount" content="769">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="devBoer Labs Docs&#39;">
-  <meta name="twitter:description" content="Hi, I’m Austin (aka devboer). I learned front-end web development at Kenzie Academy, but I’ll be honest—while I can wrangle CSS when I need to, it’s not my favorite part. My real enjoyment comes from coding logic, solving tricky problems, and making things work under the hood.
-Over time, I’ve expanded into self-hosting services on Proxmox, building a homelab where I can experiment, break things, and fix them again. That hands-on tinkering started years ago when I became the family’s unofficial IT support, and it taught me how to communicate solutions clearly while actually getting stuff done.">
+  <meta name="twitter:title" content="GPU passthrough to LXC on PVE">
+  <meta name="twitter:description" content="Bind GPU to Unprivileged LXC Tutorials Used: TheOrangeOne.net YouTube Video using above tutorial Mount Storage GPU Matrix for Decode/Encode Reference Greg suggesting libnvidia-encode/decode on guestOS and learned to use -### corresponding with driver version Proxmox Setup Update Proxmox &amp; Reboot Install pve-headers &amp; build-essentials update-initramfs blacklist free nvidia driver download official nvidia driver chmod &#43;x driver ./run install install 32-bit also ignore other prompts edit modules.d files for loading and conf create a rules file reboot verify driver is working with nvidia-smi also could try lshw -C display this will list driver it should say &#39;nvidia&#39; Create CT with ubuntu compatible with jellyfin (18, 20, 22 not 22.10 work) Do not start CT on creation Edit CT conf file with # Allow cgroup access lxc.cgroup.devices.allow: c 195:* rwm lxc.cgroup.devices.allow: c 243:* rwm # Pass through device files lxc.mount.entry: /dev/nvidia0 dev/nvidia0 none bind,optional,create=file lxc.mount.entry: /dev/nvidiactl dev/nvidiactl none bind,optional,create=file lxc.mount.entry: /dev/nvidia-uvm dev/nvidia-uvm none bind,optional,create=file lxc.mount.entry: /dev/nvidia-modeset dev/nvidia-modeset none bind,optional,create=file lxc.mount.entry: /dev/nvidia-uvm-tools dev/nvidia-uvm-tools none bind,optional,create=file [!Note]
+==&#39;cgroup access&#39;== part corresponds with the character files below in ==&#39;device files&#39;==
+&#34;195:*&#34; is using a wildcard for the device files. You can also write in this number too.
+Also you can write in more IDs if you notice it changing on reboots to make certain you don&#39;t lose passthrough access.
+Find these IDs using ls -l /dev/nv* and ignore &#39;caps&#39; files.">
 
 <link rel="stylesheet" href="https://docs.devboer.com/css/styles.4b3745ac57cf6dd871f07bb5872ccf7fe2a524e1620900c4aa251c2492ba6c8e292dbddb2f2ccfe32cf24db99a75587e79d6f922a06787ba287e4a38bec38dd7.css" integrity="sha512-SzdFrFfPbdhx8Hu1hyzPf&#43;KlJOFiCQDEqiUcJJK6bI4pLb3bLyzP4yzyTbmadVh&#43;edb5IqBnh7oofko4vsON1w==">
+<meta name="description" content=" Bind GPU to Unprivileged LXC Tutorials Used: TheOrangeOne.net YouTube Video using above tutorial Mount Storage GPU Matrix for Decode/Encode Reference Greg suggesting libnvidia-encode/decode on guestOS and learned to use -### corresponding with driver version Proxmox Setup Update Proxmox &amp; Reboot Install pve-headers &amp; build-essentials update-initramfs blacklist free nvidia driver download official nvidia driver chmod &#43;x driver ./run install install 32-bit also ignore other prompts edit modules.d files for loading and conf create a rules file reboot verify driver is working with nvidia-smi also could try lshw -C display this will list driver it should say &#39;nvidia&#39; Create CT with ubuntu compatible with jellyfin (18, 20, 22 not 22.10 work) Do not start CT on creation Edit CT conf file with # Allow cgroup access lxc.cgroup.devices.allow: c 195:* rwm lxc.cgroup.devices.allow: c 243:* rwm # Pass through device files lxc.mount.entry: /dev/nvidia0 dev/nvidia0 none bind,optional,create=file lxc.mount.entry: /dev/nvidiactl dev/nvidiactl none bind,optional,create=file lxc.mount.entry: /dev/nvidia-uvm dev/nvidia-uvm none bind,optional,create=file lxc.mount.entry: /dev/nvidia-modeset dev/nvidia-modeset none bind,optional,create=file lxc.mount.entry: /dev/nvidia-uvm-tools dev/nvidia-uvm-tools none bind,optional,create=file [!Note]
+==&#39;cgroup access&#39;== part corresponds with the character files below in ==&#39;device files&#39;==
+&quot;195:*&quot; is using a wildcard for the device files. You can also write in this number too.
+Also you can write in more IDs if you notice it changing on reboots to make certain you don&#39;t lose passthrough access.
+Find these IDs using ls -l /dev/nv* and ignore &#39;caps&#39; files.
+">
 
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-  <link rel=stylesheet href=https://docs.devboer.com//css/lite-yt-embed.css>
-  <script src=https://docs.devboer.com//js/lite-yt-embed.js></script>
 </head>
-<body class="page-section" id="pagetop">
+<body class="page-page" id="pagetop">
   <header class="nav_header">
 <nav class="wrap nav menu">
 	<a href='https://docs.devboer.com/' class="nav_brand">
@@ -70,7 +69,7 @@ Over time, I’ve expanded into self-hosting services on Proxmox, building a hom
 </svg>
     </label>
     
-    <input type="search" class="search_field  standardize-input" placeholder="Search docs" id="find" autocomplete="off" data-scope='docs'>
+    <input type="search" class="search_field  standardize-input" placeholder="Search guides" id="find" autocomplete="off" data-scope='guides'>
     <div class="search_results results"></div>
   </div>
 		</li>
@@ -109,159 +108,31 @@ Over time, I’ve expanded into self-hosting services on Proxmox, building a hom
 </svg></label>
   </div>
   <section class="section aside_inner">
-    <h2 class="section_title active"><a  href="https://docs.devboer.com/docs/" class="group">devBoer Labs Docs&#39;</a></h2>
-      <section class="" id="docs-devboer-labs-docs">
+    <h2 class="section_title"><a  href="https://docs.devboer.com/guides/" class="group">Guides</a></h2>
+      <section class="" id="docs-guides">
   <section class="section aside_inner">
-    <h2 class="section_title"><a  href="https://docs.devboer.com/docs/compose/" class="group">Compose Docs</a></h2>
-      <section class="" id="docs-compose-docs">
-        <h3 class="section_link"><a id="docs-install-theme" href="https://docs.devboer.com/docs/compose/install-theme/">Install theme</a></h3>
-        <nav id="toc-install-theme">
+    <h2 class="section_title"><a  href="https://docs.devboer.com/guides/lxc-guides/" class="group">Intro</a></h2>
+      <section class="" id="docs-intro">
+        <h3 class="section_link"><a id="docs-lxc-privilege-conversion" href="https://docs.devboer.com/guides/lxc-guides/lxc-privilege-conversion/">Lxc Privilege Conversion</a></h3>
+        <nav id="toc-lxc-privilege-conversion">
   <ul>
     <li>
       <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#without-any-challenges-i-was-ready-to-complete-the-project">Without any challenges, I was ready to complete the project...</a></li>
+        <li><a href="#connection-complete-and-on-to-the-next-adventure">Connection complete, and ON to the next adventure!</a></li>
       </ul>
     </li>
-    <li><a href="#run-your-site-with-compose-theme">Run your site with compose theme</a>
-      <ul>
-        <li><a href="#option-1-my-favorite">Option 1 (my favorite)</a></li>
-        <li><a href="#option-2-recommended">Option 2 (recommended)</a></li>
-        <li><a href="#option-3-great-for-testing-quickly">Option 3 (Great for testing quickly)</a></li>
-      </ul>
-    </li>
+    <li><a href="#next-up-">Next Up ...</a></li>
   </ul>
 </nav>
-        <h3 class="section_link"><a id="docs-use-tinaio-cms" href="https://docs.devboer.com/docs/compose/use-tina-cms/">Use Tina.io CMS</a></h3>
-        <nav id="toc-use-tina-io-cms">
-  <ul>
-    <li><a href="#prerequisites-">Prerequisites !!</a>
-      <ul>
-        <li><a href="#requirement-1--a-tinaio-account">Requirement 1 : A Tina.io account</a></li>
-        <li><a href="#requirement-2-a-netlify-account-optional">Requirement 2: A Netlify account <em>(optional)</em></a></li>
-        <li><a href="#step-1--fork-or-clone-compose-theme">Step 1 : Fork or Clone Compose theme</a></li>
-        <li><a href="#step-2--add-your-repository-in-tina-cms">Step 2 : Add your repository in Tina CMS</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav>
-        <h3 class="section_link"><a id="docs-content-organization" href="https://docs.devboer.com/docs/compose/organize-content/">Content organization</a></h3>
-        <nav id="toc-content-organization">
+        <h3 class="section_link active"><a id="docs-gpu-passthrough-to-lxc-on-pve" href="https://docs.devboer.com/guides/lxc-guides/bind-gpu-to-unprivileged-lxc/">GPU passthrough to LXC on PVE</a></h3>
+        <nav id="toc-gpu-passthrough-to-lxc-on-pve">
   <ul>
     <li>
       <ul>
-        <li>
-          <ul>
-            <li><a href="#documentation">Documentation</a></li>
-            <li><a href="#home-page">Home Page</a></li>
-            <li><a href="#other-pages">Other pages</a></li>
-            <li><a href="#does-this-theme-support-blogging-function">Does this theme support blogging function?</a></li>
-          </ul>
-        </li>
+        <li><a href="#tutorials-used">Tutorials Used:</a></li>
       </ul>
     </li>
-  </ul>
-</nav>
-        <h3 class="section_link"><a id="docs-shortcodes" href="https://docs.devboer.com/docs/compose/shortcodes/">Shortcodes</a></h3>
-        <nav id="toc-shortcodes">
-  <ul>
-    <li>
-      <ul>
-        <li><a href="#block">Block</a></li>
-        <li><a href="#column">Column</a></li>
-        <li><a href="#youtube-video">Youtube Video</a>
-          <ul>
-            <li><a href="#lite-youtube">Lite YouTube</a></li>
-          </ul>
-        </li>
-        <li><a href="#button">Button</a></li>
-        <li><a href="#picture">Picture</a></li>
-        <li><a href="#gallery">Gallery</a></li>
-        <li><a href="#tabs">Tab(s)</a></li>
-        <li><a href="#tip">Tip</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav>
-        <h3 class="section_link"><a id="docs-search-function" href="https://docs.devboer.com/docs/compose/search/">Search Function</a></h3>
-        <nav id="toc-search-function">
-  <ul>
-    <li>
-      <ul>
-        <li><a href="#1-passive-search">1. Passive search</a></li>
-        <li><a href="#2-live-search">2. Live search</a></li>
-        <li><a href="#customize-search-feedback-labels">Customize search feedback labels</a></li>
-        <li><a href="#what-is-a-valid-search-query">What is a valid search query</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav>
-        <h3 class="section_link"><a id="docs-mermaid" href="https://docs.devboer.com/docs/compose/mermaid/">Mermaid</a></h3>
-        <nav id="toc-mermaid">
-  <ul>
-    <li>
-      <ul>
-        <li><a href="#sequence-diagrams">Sequence Diagrams</a></li>
-        <li><a href="#flow-charts">Flow Charts</a></li>
-        <li><a href="#graphs">Graphs</a></li>
-        <li><a href="#class-diagram">Class Diagram</a></li>
-        <li><a href="#state-diagram">State Diagram</a></li>
-        <li><a href="#relationship-diagrams">Relationship Diagrams</a></li>
-        <li><a href="#user-journey">User Journey</a></li>
-        <li><a href="#gantt">Gantt</a></li>
-        <li><a href="#pie-chart">Pie Chart</a></li>
-        <li><a href="#mindmap">Mindmap</a></li>
-        <li><a href="#timeline">Timeline</a></li>
-        <li><a href="#gitgraph">Gitgraph</a></li>
-        <li><a href="#requirement-diagram">Requirement Diagram</a></li>
-        <li><a href="#c4c-diagram">C4C Diagram</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav>
-        <h3 class="section_link"><a id="docs-graphs-charts--dynamic-tables" href="https://docs.devboer.com/docs/compose/graphs-charts-tables/">Graphs, charts &amp; dynamic tables</a></h3>
-        <nav id="toc-graphs-charts-dynamic-tables">
-  <ul>
-    <li>
-      <ul>
-        <li>
-          <ul>
-            <li><a href="#show-a-pie-doughnut--bar-chart-at-once">Show a pie, doughnut &amp; bar chart at once</a></li>
-            <li><a href="#show-table-at-once"><strong>Show Table at once</strong></a></li>
-            <li><a href="#show-only-a-pie-and-a-doughnut-chart">Show only a pie and a doughnut chart</a></li>
-            <li><a href="#show-table-with-filter">Show table with filter</a></li>
-            <li><a href="#show-table-only">Show table only</a></li>
-          </ul>
-        </li>
-      </ul>
-    </li>
-  </ul>
-</nav>
-        <h3 class="section_link"><a id="docs-customize-layouts--components" href="https://docs.devboer.com/docs/compose/customize/">Customize layouts &amp; components</a></h3>
-        <nav id="toc-customize-layouts-components">
-  <ul>
-    <li>
-      <ul>
-        <li><a href="#shortcodes-modifiers">Shortcodes modifiers</a>
-          <ul>
-            <li><a href="#grid">Grid</a></li>
-            <li><a href="#spacing">Spacing</a></li>
-          </ul>
-        </li>
-        <li><a href="#how-do-i-disable-dark-mode">How do I disable dark mode?</a></li>
-        <li><a href="#how-do-i-change-the-theme-color">How do I change the theme color?</a></li>
-        <li><a href="#how-can-i-change-the-address-bar-color-on-mobile-devices">How can I change the address bar color on mobile devices?</a></li>
-        <li><a href="#how-do-i-add-custom-styles-scripts-meta-tags-etc">How do I add custom styles, scripts, meta tags e.t.c</a></li>
-        <li><a href="#i-want-to-add-custom-sass-or-js">I want to add custom SASS or JS</a></li>
-        <li><a href="#how-to-change-site-favicon">How to change site favicon</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav>
-        <h3 class="section_link"><a id="docs-leverage-github-actions" href="https://docs.devboer.com/docs/compose/github-actions/">Leverage Github actions</a></h3>
-        <nav id="toc-leverage-github-actions">
-  <ul>
-    <li><a href="#aws-ci">AWS CI</a></li>
-    <li><a href="#algolia-ci">Algolia CI</a></li>
   </ul>
 </nav>
       </section>
@@ -271,13 +142,218 @@ Over time, I’ve expanded into self-hosting services on Proxmox, building a hom
 </aside>
 
   <main class="content">
-    <h1>devBoer Labs Docs&#39;</h1><p>Hi, I’m Austin (aka devboer). I learned front-end web development at Kenzie Academy, but I’ll be honest—while I can wrangle CSS when I need to, it’s not my favorite part. My real enjoyment comes from coding logic, solving tricky problems, and making things work under the hood.</p>
-<p>Over time, I’ve expanded into self-hosting services on Proxmox, building a homelab where I can experiment, break things, and fix them again. That hands-on tinkering started years ago when I became the family’s unofficial IT support, and it taught me how to communicate solutions clearly while actually getting stuff done.</p>
-<p>This site documents my learning journey—what I’ve built, what I’ve learned, and the challenges I’ve tackled along the way.</p>
-<a href="./compose/" class="button mb-1">Compose Theme Docs</a>
+    <h1>GPU passthrough to LXC on PVE</h1><h1 id="bind-gpu-to-unprivileged-lxc" class=link_owner>
+  Bind GPU to Unprivileged LXC
+  <a href="#bind-gpu-to-unprivileged-lxc" class="link icon">
+    <svg>
+      <use xlink:href="#anchor-link"></use>
+    </svg>
+  </a>
+</h1>
+<h3 id="tutorials-used" class=link_owner>
+  Tutorials Used:
+  <a href="#tutorials-used" class="link icon">
+    <svg>
+      <use xlink:href="#anchor-link"></use>
+    </svg>
+  </a>
+</h3>
+<ul>
+<li><a href="https://theorangeone.net/posts/lxc-nvidia-gpu-passthrough/">TheOrangeOne.net</a></li>
+<li><a href="https://www.youtube.com/watch?v=-Us8KPOhOCY">YouTube Video using above tutorial</a></li>
+<li><a href="https://virtualizeeverything.com/2022/05/18/passing-usb-storage-drive-to-proxmox-lxc/">Mount Storage</a></li>
+<li><a href="https://developer.nvidia.com/video-encode-and-decode-gpu-support-matrix-new">GPU Matrix</a> for Decode/Encode Reference</li>
+<li>Greg suggesting libnvidia-encode/decode on guestOS and learned to use -### corresponding with driver version</li>
+</ul>
+<h1 id="proxmox-setup" class=link_owner>
+  Proxmox Setup
+  <a href="#proxmox-setup" class="link icon">
+    <svg>
+      <use xlink:href="#anchor-link"></use>
+    </svg>
+  </a>
+</h1>
+<ul>
+<li>Update Proxmox &amp; Reboot</li>
+<li>Install pve-headers &amp; build-essentials</li>
+<li>update-initramfs</li>
+<li>blacklist free nvidia driver</li>
+<li>download official nvidia driver</li>
+<li>chmod +x driver</li>
+<li>./run install</li>
+<li>install 32-bit also</li>
+<li>ignore other prompts</li>
+<li>edit modules.d files for loading and conf</li>
+<li>create a rules file</li>
+<li>reboot</li>
+<li>verify driver is working with <code>nvidia-smi</code></li>
+<li>also could try <code>lshw -C display</code> this will list driver it should say 'nvidia'</li>
+<li>Create CT with ubuntu compatible with jellyfin (18, 20, 22 not 22.10 work)</li>
+<li>Do not start CT on creation</li>
+<li>Edit CT conf file with</li>
+</ul>
+<pre tabindex="0"><code># Allow cgroup access
+lxc.cgroup.devices.allow: c 195:* rwm
+lxc.cgroup.devices.allow: c 243:* rwm
 
+# Pass through device files
+lxc.mount.entry: /dev/nvidia0 dev/nvidia0 none bind,optional,create=file
+lxc.mount.entry: /dev/nvidiactl dev/nvidiactl none bind,optional,create=file
+lxc.mount.entry: /dev/nvidia-uvm dev/nvidia-uvm none bind,optional,create=file
+lxc.mount.entry: /dev/nvidia-modeset dev/nvidia-modeset none bind,optional,create=file
+lxc.mount.entry: /dev/nvidia-uvm-tools dev/nvidia-uvm-tools none bind,optional,create=file
+</code></pre><blockquote>
+<p>[!Note]<br>
+=='cgroup access'== part corresponds with the character files below in =='device files'==<br>
+&quot;195:*&quot; is using a wildcard for the device files. You can also write in this number too.<br>
+Also you can write in more IDs if you notice it changing on reboots to make certain you don't lose passthrough access.<br>
+Find these IDs using ls -l /dev/nv* and ignore 'caps' files.</p></blockquote>
+<pre tabindex="0"><code>arch: amd64
+cores: 2
+hostname: MediaSrvUbuntu
+memory: 4096
+# mp0 mounts your drive to container (there is a process to mount it into PVE)
+# mp#: /path/to/drive/dir,mp=/your/custom/path/on_ct
+mp0: /mnt/data/multimedia,mp=/home/admin/data
+net0: name=eth0,bridge=vmbr0,gw=192.168.50.1,hwaddr=32:07:27:92:00:A7,ip=192.168.50.20/24,tag=50,type=veth
+ostype: ubuntu
+rootfs: local-lvm:vm-121-disk-0,size=12G
+swap: 512
+# Group Access to Device Files
+# lxc.cgroup2.devices.allow: c ID1:ID2 rwm
+# rw gives reading and writing and m, I don&#39;t know
+lxc.cgroup2.devices.allow: c 195:0 rwm
+lxc.cgroup2.devices.allow: c 195:255 rwm
+lxc.cgroup2.devices.allow: c 510:0 rwm
+lxc.cgroup2.devices.allow: c 195:254 rwm
+lxc.cgroup2.devices.allow: c 510:1 rwm
+lxc.cgroup2.devices.allow: c 10:144 rwm
+# Character/Device Files matching above IDs
+# Find them with &#39;ls -l /dev/nv*&#39; first column and second column after user owner
+lxc.mount.entry: /dev/nvidia0 dev/nvidia0 none bind,optional,create=file
+lxc.mount.entry: /dev/nvidiactl dev/nvidiactl none bind,optional,create=file
+lxc.mount.entry: /dev/nvidia-uvm dev/nvidia-uvm none bind,optional,create=file
+lxc.mount.entry: /dev/nvidia-modeset dev/nvidia-modeset none bind,optional,create=file
+lxc.mount.entry: /dev/nvidia-uvm-tools dev/nvidia-uvm-tools none bind,optional,create=file
+lxc.mount.entry: /dev/nvram /dev/nvram none bind,optional,create=file
+</code></pre><ul>
+<li>Boot Container</li>
+<li>Update &amp; Reboot</li>
+<li>Install nvidia drivers with argument <code>--no-kernel-module</code> as container will use host's kernel modules</li>
+<li>Again ignore messages and install 32-bit compatibilities</li>
+<li>Install <code>nvtop</code>, <code>libnvidia-encode-525</code> (this will include -decode) ⟵ This needs to match Driver version</li>
+<li><code>update initramfs -u</code></li>
+<li>reboot</li>
+<li>Now container and hypervisor are in sync on driver versions.</li>
+<li>Test (verify) <code>nvidia-smi</code></li>
+</ul>
+<blockquote>
+<p>[!Note]<br>
+You can only see processes running from host with command nvidia-smi while on the guest you can use nvtop</p></blockquote>
+<p>These were the steps I used.... to ready container for hardware transcoding.</p>
+<h1 id="jellyfin-installation" class=link_owner>
+  Jellyfin installation
+  <a href="#jellyfin-installation" class="link icon">
+    <svg>
+      <use xlink:href="#anchor-link"></use>
+    </svg>
+  </a>
+</h1>
+<p>Steps followed from here <a href="https://jellyfin.org/docs/general/installation/linux/#ubuntu-repository">here</a><br>
+You can use the script or do the scripts instructions by hand from the steps below script.
+<code>curl https://repo.jellyfin.org/install-debuntu.sh \| sudo bash</code>
+or
+<code>wget -O- https://repo.jellyfin.org/install-debuntu.sh \| sudo bash</code><br>
+I edited out 'sudo' as I was doing this from root.</p>
+<p>Some LXC packages that nvidia driver installer suggested…. libglvnd-dev, pkg-config, and libvulkan1<br>
+Host modifications are missing in this guide or rather details. I'm sure they are in the links above but… why</p>
+<p>As of Mar 31, 2024…. they still match config and on both guest and host have same driver version but I have an error on 'nvidia-smi' command on guest side. Reboot?<br>
+crw-rw-rw-  195,254 root root  31 Mar 02:31  /dev/nvidia-modeset
+crw-rw-rw-    237,0 root root  31 Mar 02:31  /dev/nvidia-uvm
+crw-rw-rw-    237,1 root root  31 Mar 02:31  /dev/nvidia-uvm-tools
+crw-rw-rw-    195,0 root root  31 Mar 02:31  /dev/nvidia0
+crw-rw-rw-  195,255 root root  31 Mar 02:31  /dev/nvidiactl
+crw———-   10,144 root root  27 Mar 19:14  /dev/nvram<br>
+/dev/nvidia-caps:
+Permissions  Size User Group Date Modified Name
+cr————  240,1 root root  31 Mar 02:31  nvidia-cap1
+cr—r—r—  240,2 root root  31 Mar 02:31  nvidia-cap2</p>
+<p>Decoding Matrix</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">BOARD</th>
+          <th style="text-align: left">FAMILY</th>
+          <th style="text-align: left">NVDEC Generation</th>
+          <th style="text-align: left">Desktop/Mobile</th>
+          <th style="text-align: left">Number of Chips</th>
+          <th style="text-align: left">Total # of NVDEC</th>
+          <th style="text-align: left">MPEG-1</th>
+          <th style="text-align: left">MPEG-2</th>
+          <th style="text-align: left">VC-1</th>
+          <th style="text-align: left">VP8</th>
+          <th style="text-align: left">VP9 8 Bit</th>
+          <th style="text-align: left">VP9 10 Bit</th>
+          <th style="text-align: left">VP9 12 Bit</th>
+          <th style="text-align: left">H.264(AVCHD)</th>
+          <th style="text-align: left">H.265 (HEVC) 4:2:0  8 Bit</th>
+          <th style="text-align: left">H.265 (HEVC) 4:2:0 10 Bit</th>
+          <th style="text-align: left">H.265 (HEVC) 4:2:0 12 Bit</th>
+          <th style="text-align: left">H.265 (HEVC) 4:4:4 8 Bit</th>
+          <th style="text-align: left">H.265 (HEVC) 4:4:4 10 Bit</th>
+          <th style="text-align: left">H.265 (HEVC) 4:4:4 12 Bit</th>
+          <th style="text-align: left">AV1 8 Bit</th>
+          <th style="text-align: left">AV1 10 Bit</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">Quadro P2000 / P2200</td>
+          <td style="text-align: left">Pascal</td>
+          <td style="text-align: left">3rd Gen</td>
+          <td style="text-align: left">D</td>
+          <td style="text-align: left">1</td>
+          <td style="text-align: left">1</td>
+          <td style="text-align: left">YES</td>
+          <td style="text-align: left">YES</td>
+          <td style="text-align: left">YES</td>
+          <td style="text-align: left">NO</td>
+          <td style="text-align: left">YES</td>
+          <td style="text-align: left">YES</td>
+          <td style="text-align: left">YES</td>
+          <td style="text-align: left">YES</td>
+          <td style="text-align: left">YES</td>
+          <td style="text-align: left">YES</td>
+          <td style="text-align: left">YES</td>
+          <td style="text-align: left">NO</td>
+          <td style="text-align: left">NO</td>
+          <td style="text-align: left">NO</td>
+          <td style="text-align: left">NO</td>
+          <td style="text-align: left">NO</td>
+      </tr>
+  </tbody>
+</table>
+<p>Translation on Jellyfin Playback NVIDIA NVENC Decoding checks<br>
+[ x ] H264<br>
+[ x ] HEVC<br>
+[ x ] MPEG2<br>
+[ ? ] MPEG4<br>
+[ x ] VC1<br>
+[ - ] VP8<br>
+[ x ] VP9<br>
+[ - ] AV1<br>
+[ ? ] HEVC 10bit<br>
+[ x ] VP9 10bit</p>
 
-    <div class="pager pager_lean">
+    <div class="pager">
+  
+    
+    <div class="pager_item prev">
+      <a href="https://docs.devboer.com/guides/lxc-guides/lxc-privilege-conversion/" class="pager_link button" title="Lxc Privilege Conversion" rel="prev">
+        <span class="pager_label">Lxc Privilege Conversion</span>
+      </a>
+    </div>
+    
   
 
   
