@@ -1,16 +1,16 @@
 ---
-title: "GPU passthrough to LXC on PVE"
+title: "GPU and unprivileged LXC"
 date: 2024-08-28T01:01:28-05:00
 draft: false
 ---
 
 # Bind GPU to Unprivileged LXC   
 ### Tutorials Used:   
-- [TheOrangeOne.net](https://theorangeone.net/posts/lxc-nvidia-gpu-passthrough/)   
+- [TheOrangeOne.net](https://theorangeone.net/posts/lxc-nvidia-gpu-passthrough/)
+{{< youtube "https://www.youtube.com/watch?v=-Us8KPOhOCY" >}}   
 - [YouTube Video using above tutorial](https://www.youtube.com/watch?v=-Us8KPOhOCY)   
-- [Mount Storage](https://virtualizeeverything.com/2022/05/18/passing-usb-storage-drive-to-proxmox-lxc/)   
-- [GPU Matrix](https://developer.nvidia.com/video-encode-and-decode-gpu-support-matrix-new) for Decode/Encode Reference   
-- Greg suggesting libnvidia-encode/decode on guestOS and learned to use -### corresponding with driver version   
+- [Mount Storage](https://virtualizeeverything.com/2022/05/18/passing-usb-storage-drive-to-proxmox-lxc/)     
+- [Karvec](https://blog.maybeits.us) suggesting libnvidia-encode/decode on guestOS and learned to use -### corresponding with driver version   
    
 # Proxmox Setup   
 - Update Proxmox & Reboot   
@@ -43,42 +43,63 @@ lxc.mount.entry: /dev/nvidia-uvm dev/nvidia-uvm none bind,optional,create=file
 lxc.mount.entry: /dev/nvidia-modeset dev/nvidia-modeset none bind,optional,create=file
 lxc.mount.entry: /dev/nvidia-uvm-tools dev/nvidia-uvm-tools none bind,optional,create=file
 
-```
-> [!Note]   
+{{< tip >}}
 > =='cgroup access'== part corresponds with the character files below in =='device files'==   
 > "195:\*" is using a wildcard for the device files. You can also write in this number too.   
 > Also you can write in more IDs if you notice it changing on reboots to make certain you don't lose passthrough access.   
 > Find these IDs using ls -l /dev/nv* and ignore 'caps' files.   
+{{< /tip >}}
 
+### My full config:
 ```
+#<div align="center">
+#  <a href="https%3A//devboer.com">
+#    <img src="https%3A//github.com/devboer/dev.portfolio/blob/main/assets/images/logo-pve-112-by-112px.png?raw=true" alt="devboer Logo" height="112">
+#  </a>
+#
+#  ## Jellyfin LXC
+#
+#
+#  %F0%9F%8C%8D [External](https%3A//jellyfin.devboer.com) | %F0%9F%8F%A0 [Internal](https%3A//jellyfin.int.devboer.com) | %F0%9F%94%97 [40.20%3A8096](http%3A//10.0.40.20%3A8096) | %F0%9F%93%9A [GitHub](https%3A//github.com/jellyfin/jellyfin) <br/> %F0%9F%93%8E [Documentation](https%3A//jellyfin.org/docs/) | %E2%84%9E [Helper Scripts](https%3A//helper-scripts.com)
+#</div>
 arch: amd64
 cores: 2
-hostname: MediaSrvUbuntu
+features: nesting=1
+hostname: jellyfin
 memory: 4096
-# mp0 mounts your drive to container (there is a process to mount it into PVE)
-# mp#: /path/to/drive/dir,mp=/your/custom/path/on_ct
-mp0: /mnt/data/multimedia,mp=/home/admin/data
-net0: name=eth0,bridge=vmbr0,gw=192.168.50.1,hwaddr=32:07:27:92:00:A7,ip=192.168.50.20/24,tag=50,type=veth
+# Storage Map Points (mp0 is shared with other containers)
+mp0: /mnt/data/shared-media,mp=/opt/shared-media
+mp1: /mnt/data/app-data/jellyfin,mp=/opt/app-data
+nameserver: 1.1.1.1
+net0: name=eth0,bridge=vmbr0,hwaddr=BC:24:11:84:45:8A,ip=dhcp,tag=40,type=veth
+onboot: 1
 ostype: ubuntu
-rootfs: local-lvm:vm-121-disk-0,size=12G
+rootfs: local-lvm:vm-700-disk-0,size=8G
+startup: order=1
 swap: 512
-# Group Access to Device Files
-# lxc.cgroup2.devices.allow: c ID1:ID2 rwm
-# rw gives reading and writing and m, I don't know
+tags: media;public
+unprivileged: 1
+# Container UID/GID -> Host UID/GID Mapping
+lxc.idmap: u 0 100000 110
+lxc.idmap: u 110 1086 1
+lxc.idmap: u 111 100111 65425
+lxc.idmap: g 0 100000 118
+lxc.idmap: g 118 1086 1
+lxc.idmap: g 119 100119 65417
+# Device Passthrough Permissions
 lxc.cgroup2.devices.allow: c 195:0 rwm
 lxc.cgroup2.devices.allow: c 195:255 rwm
-lxc.cgroup2.devices.allow: c 510:0 rwm
 lxc.cgroup2.devices.allow: c 195:254 rwm
-lxc.cgroup2.devices.allow: c 510:1 rwm
+lxc.cgroup2.devices.allow: c 236:0 rwm
+lxc.cgroup2.devices.allow: c 236:1 rwm
 lxc.cgroup2.devices.allow: c 10:144 rwm
-# Character/Device Files matching above IDs
-# Find them with 'ls -l /dev/nv*' first column and second column after user owner
+# Device Mount Points
 lxc.mount.entry: /dev/nvidia0 dev/nvidia0 none bind,optional,create=file
 lxc.mount.entry: /dev/nvidiactl dev/nvidiactl none bind,optional,create=file
-lxc.mount.entry: /dev/nvidia-uvm dev/nvidia-uvm none bind,optional,create=file
 lxc.mount.entry: /dev/nvidia-modeset dev/nvidia-modeset none bind,optional,create=file
+lxc.mount.entry: /dev/nvidia-uvm dev/nvidia-uvm none bind,optional,create=file
 lxc.mount.entry: /dev/nvidia-uvm-tools dev/nvidia-uvm-tools none bind,optional,create=file
-lxc.mount.entry: /dev/nvram /dev/nvram none bind,optional,create=file
+lxc.mount.entry: /dev/nvram dev/nvram none bind,optional,create=file
 
 ```
 - Boot Container   
@@ -135,3 +156,4 @@ Translation on Jellyfin Playback NVIDIA NVENC Decoding checks
 [ ? ] HEVC 10bit   
 [ x ] VP9 10bit   
    
+[GPU Matrix Source](https://developer.nvidia.com/video-encode-and-decode-gpu-support-matrix-new) 
