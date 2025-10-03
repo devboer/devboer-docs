@@ -1,5 +1,5 @@
 +++
-title = "devBoer Labs Docs'"
+title = "Lab Docs"
 weight = 1
 +++
 
@@ -9,5 +9,4 @@ Over time, I’ve expanded into self-hosting services on Proxmox, building a hom
 
 This site documents my learning journey—what I’ve built, what I’ve learned, and the challenges I’ve tackled along the way.
 
-{{< button "./compose/" "Compose Theme Docs" "mb-1" >}}
-
+{{< button "./helloworld.md" "Get started now" >}}
