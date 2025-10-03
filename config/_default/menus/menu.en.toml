@@ -15,9 +15,9 @@
   url = "tutorials/"
 
 [[main]]
-  name = "Example"
+  name = "Profile"
   weight = 3
-  url = "https://docs.neuralvibes.com"
+  url = "https://devboer.com"
 
 # [[main]]
 #   name = "Blog"
