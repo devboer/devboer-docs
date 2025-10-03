@@ -21,7 +21,7 @@ Find these IDs using ls -l /dev/nv* and ignore &#39;caps&#39; files.">
   <meta property="og:type" content="article">
     <meta property="article:section" content="guides">
     <meta property="article:published_time" content="2024-08-28T01:01:28-05:00">
-    <meta property="article:modified_time" content="2025-10-03T04:34:23+00:00">
+    <meta property="article:modified_time" content="2025-10-03T04:50:35+00:00">
 
   <meta itemprop="name" content="GPU passthrough to LXC on PVE">
   <meta itemprop="description" content="Bind GPU to Unprivileged LXC Tutorials Used: TheOrangeOne.net YouTube Video using above tutorial Mount Storage GPU Matrix for Decode/Encode Reference Greg suggesting libnvidia-encode/decode on guestOS and learned to use -### corresponding with driver version Proxmox Setup Update Proxmox &amp; Reboot Install pve-headers &amp; build-essentials update-initramfs blacklist free nvidia driver download official nvidia driver chmod &#43;x driver ./run install install 32-bit also ignore other prompts edit modules.d files for loading and conf create a rules file reboot verify driver is working with nvidia-smi also could try lshw -C display this will list driver it should say &#39;nvidia&#39; Create CT with ubuntu compatible with jellyfin (18, 20, 22 not 22.10 work) Do not start CT on creation Edit CT conf file with # Allow cgroup access lxc.cgroup.devices.allow: c 195:* rwm lxc.cgroup.devices.allow: c 243:* rwm # Pass through device files lxc.mount.entry: /dev/nvidia0 dev/nvidia0 none bind,optional,create=file lxc.mount.entry: /dev/nvidiactl dev/nvidiactl none bind,optional,create=file lxc.mount.entry: /dev/nvidia-uvm dev/nvidia-uvm none bind,optional,create=file lxc.mount.entry: /dev/nvidia-modeset dev/nvidia-modeset none bind,optional,create=file lxc.mount.entry: /dev/nvidia-uvm-tools dev/nvidia-uvm-tools none bind,optional,create=file [!Note]
@@ -30,7 +30,7 @@ Find these IDs using ls -l /dev/nv* and ignore &#39;caps&#39; files.">
 Also you can write in more IDs if you notice it changing on reboots to make certain you don&#39;t lose passthrough access.
 Find these IDs using ls -l /dev/nv* and ignore &#39;caps&#39; files.">
   <meta itemprop="datePublished" content="2024-08-28T01:01:28-05:00">
-  <meta itemprop="dateModified" content="2025-10-03T04:34:23+00:00">
+  <meta itemprop="dateModified" content="2025-10-03T04:50:35+00:00">
   <meta itemprop="wordCount" content="769">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="GPU passthrough to LXC on PVE">
@@ -77,7 +77,7 @@ Find these IDs using ls -l /dev/nv* and ignore &#39;caps&#39; files.
 			<a class="nav-link" href="https://docs.devboer.com/docs/"><span>Docs</span></a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link" href="https://docs.devboer.com/tutorials/"><span>Tutorials</span></a>
+			<a class="nav-link" href="https://docs.devboer.com/tutorials/"><span>Guides</span></a>
 		</li>
 		<li class="nav-item">
 			<a class="nav-link" href="https://devboer.com"><span>Profile</span></a>
