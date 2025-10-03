@@ -19,11 +19,10 @@ Over time, I’ve expanded into self-hosting services on Proxmox since 2022 by b
 
 This site documents my learning journey—what I’ve built, what I’ve learned, and the challenges I’ve tackled along the way.
 
-{{< button "./docs/compose" "Compose Theme Docs" "mb-1" >}}
-{{< button "./guides" "Guides" >}}
+{{< button "./docs/compose" "Compose Theme Docs" "mb-1" >}} {{< button "./guides" "Guides" >}}
 {{< /column >}}
 
 {{< column >}}
-![diy](/images/painting.jpg)
+![diy](https://github.com/devboer/dev.portfolio/blob/main/assets/images/logo.png?raw=true)
 {{< /column >}}
 {{< /block >}}
