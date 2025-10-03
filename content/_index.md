@@ -11,20 +11,16 @@ title = "Projects"
 {{< block "grid-2" >}}
 {{< column >}}
 
-# Compose your Docs with **Ease**.
+# Hi, I’m Austin (aka devboer). 
 
-Compose is a lean `Hugo` documentation theme, inspired by [forestry.io](https://forestry.io/docs/welcome/).
+I learned front-end web development at Kenzie Academy, but I’ll be honest—while I can wrangle CSS when I need to, it’s not my favorite part. My real enjoyment comes from coding logic, solving tricky problems, and making things work under the hood.
 
-{{< tip "warning" >}}
-Feel free to open a [PR](https://github.com/onweru/compose/pulls), raise an [issue](https://github.com/onweru/compose/issues/new/choose "Open a Github Issue")(s) or request new feature(s). {{< /tip >}}
+Over time, I’ve expanded into self-hosting services on Proxmox, building a homelab where I can experiment, break things, and fix them again. That hands-on tinkering started years ago when I became the family’s unofficial IT support, and it taught me how to communicate solutions clearly while actually getting stuff done.
 
-{{< tip >}}
-You can generate diagrams, flowcharts, and piecharts from text in a similar manner as markdown using [mermaid](./docs/compose/mermaid/).
+This site documents my learning journey—what I’ve built, what I’ve learned, and the challenges I’ve tackled along the way.
 
-Or, [generate graphs, charts](docs/compose/graphs-charts-tables/#show-a-pie-doughnut--bar-chart-at-once) and tables from a csv, ~~or a json~~ file.
-{{< /tip >}}
-
-{{< button "docs/compose/" "Read the Docs" >}}{{< button "https://github.com/onweru/compose" "Download Theme" >}}
+{{< button "./docs/compose" "Compose Theme Docs" "mb-1" >}}
+{{< button "./guides" "Guides" "mb-1" >}}
 {{< /column >}}
 
 {{< column >}}

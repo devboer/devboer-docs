@@ -1,5 +1,5 @@
 # use the setting below to set multiple docs directories.
-docSections = ["docs", "tutorials"]
+docSections = ["docs", "guides"]
 
 uniqueHomePage = true # change to false to add sidebar to homepage
 
@@ -50,7 +50,7 @@ darkMode = "images/compose-light.svg"
 name = "GitHub"
 iconLight = "images/GitHubMarkLight.svg"
 iconDark = "images/GitHubMarkDark.svg"
-url = "https://github.com/onweru/compose/"
+url = "https://github.com/devboer/devboer-docs"
 
 # optional
 # attribution. Feel free to delete this
