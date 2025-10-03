@@ -1,18 +1,14 @@
 +++
-title = "Themes' Docs"
+title = "devBoer Labs Docs'"
 weight = 1
 +++
 
-These docs consists of two parts:
+Hi, I’m Austin (aka devboer). I learned front-end web development at Kenzie Academy, but I’ll be honest—while I can wrangle CSS when I need to, it’s not my favorite part. My real enjoyment comes from coding logic, solving tricky problems, and making things work under the hood.
 
-1. Hugo Compose Themes docs
-2. Hugo Clarity Theme docs.
+Over time, I’ve expanded into self-hosting services on Proxmox, building a homelab where I can experiment, break things, and fix them again. That hands-on tinkering started years ago when I became the family’s unofficial IT support, and it taught me how to communicate solutions clearly while actually getting stuff done.
 
-Please note that the features listed under each theme are independent of each other. That is to say, some features may only be found in one theme and not in both.
-
-<!-- That content is better than dummy lorem ipsum 2) That content serves a good real-world demo for this theme 3) Publish more structured docs for each theme which are better than long blocky READMEs -->
+This site documents my learning journey—what I’ve built, what I’ve learned, and the challenges I’ve tackled along the way.
 
 {{< button "./compose/" "Compose Theme Docs" "mb-1" >}}
-
-{{< button "./clarity/" "Clarity Theme Docs" >}}
+{{< button "./lab/" "Lab Docs" "mb-1" >}}
 
