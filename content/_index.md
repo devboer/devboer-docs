@@ -19,7 +19,7 @@ Over time, I’ve expanded into self-hosting services on Proxmox since 2022 by b
 
 This site documents my learning journey—what I’ve built, what I’ve learned, and the challenges I’ve tackled along the way.
 
-{{< button "./docs/compose" "Compose Theme Docs" "mb-1" >}} {{< button "./guides" "Guides" >}}
+{{< button "./docs/compose" "Compose Theme Docs" "mb-1" >}} {{< button "./guides" "Homelab Guides" "mb-1" >}}
 {{< /column >}}
 
 {{< column >}}
