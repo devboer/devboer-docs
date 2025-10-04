@@ -8,20 +8,6 @@
     <language>en</language>
     <atom:link href="https://docs.devboer.com/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Install theme</title>
-      <link>https://docs.devboer.com/docs/compose/install-theme/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://docs.devboer.com/docs/compose/install-theme/</guid>
-      <description>&lt;h3 id=&#34;prerequisites&#34; class=link_owner&gt;&#xA;  Prerequisites&#xA;  &lt;a href=&#34;#prerequisites&#34; class=&#34;link icon&#34;&gt;&#xA;    &lt;svg&gt;&#xA;      &lt;use xlink:href=&#34;#anchor-link&#34;&gt;&lt;/use&gt;&#xA;    &lt;/svg&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/h3&gt;&#xA;&lt;p&gt;First ensure that you have hugo installed.&lt;/p&gt;&#xA;&lt;p&gt;You need a &lt;a href=&#34;https://github.com/gohugoio/hugo/releases&#34;&gt;recent &lt;strong&gt;extended&lt;/strong&gt; version&lt;/a&gt; (we recommend version 0.61 or later) of &lt;a href=&#34;https://gohugo.io/&#34;&gt;Hugo&lt;/a&gt; to do local builds and previews of sites (like this one) that uses this theme.&lt;/p&gt;&#xA;&lt;p&gt;If you install from the release page, make sure to get the &lt;code&gt;extended&lt;/code&gt; Hugo version, which supports &lt;a href=&#34;https://sass-lang.com/documentation/file.SCSS_FOR_SASS_USERS.html&#34;&gt;sass&lt;/a&gt;; you may need to scroll down the list of releases to see it.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Use Tina.io CMS</title>
-      <link>https://docs.devboer.com/docs/compose/use-tina-cms/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://docs.devboer.com/docs/compose/use-tina-cms/</guid>
-      <description>&lt;p&gt;Do you prefer managing your site using a CMS? Or would you like to make it easier for someone (a non-techie, perhaps) in your team to make edits easily? If interested, follow along. Else, skip to the &lt;a href=&#34;../organize-content/&#34;&gt;next section&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;Let&#39;s sync your site with Tina CMS.&lt;/p&gt;&#xA;&lt;h2 id=&#34;prerequisites-&#34; class=link_owner&gt;&#xA;  Prerequisites !!&#xA;  &lt;a href=&#34;#prerequisites-&#34; class=&#34;link icon&#34;&gt;&#xA;    &lt;svg&gt;&#xA;      &lt;use xlink:href=&#34;#anchor-link&#34;&gt;&lt;/use&gt;&#xA;    &lt;/svg&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Obviously you ought to have &lt;strong&gt;a github account&lt;/strong&gt;. This is where your website source will live. Basically, Tina will read from github and write (commit) to your github repo.&lt;/p&gt;</description>
-    </item>
-    <item>
       <title>Content organization</title>
       <link>https://docs.devboer.com/docs/compose/organize-content/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -62,13 +48,6 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://docs.devboer.com/docs/compose/customize/</guid>
       <description>&lt;h3 id=&#34;shortcodes-modifiers&#34; class=link_owner&gt;&#xA;  Shortcodes modifiers&#xA;  &lt;a href=&#34;#shortcodes-modifiers&#34; class=&#34;link icon&#34;&gt;&#xA;    &lt;svg&gt;&#xA;      &lt;use xlink:href=&#34;#anchor-link&#34;&gt;&lt;/use&gt;&#xA;    &lt;/svg&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/h3&gt;&#xA;&lt;p&gt;These modifiers are classes you can use with shortcodes to customize the look and feel of your layouts and components.&lt;/p&gt;&#xA;&lt;h4 id=&#34;grid&#34; class=link_owner&gt;&#xA;  Grid&#xA;  &lt;a href=&#34;#grid&#34; class=&#34;link icon&#34;&gt;&#xA;    &lt;svg&gt;&#xA;      &lt;use xlink:href=&#34;#anchor-link&#34;&gt;&lt;/use&gt;&#xA;    &lt;/svg&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/h4&gt;&#xA;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th&gt;modifier&lt;/th&gt;&#xA;          &lt;th&gt;space&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;grid-2&lt;/td&gt;&#xA;          &lt;td&gt;2 columns&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;grid-3&lt;/td&gt;&#xA;          &lt;td&gt;3 columns&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;grid-4&lt;/td&gt;&#xA;          &lt;td&gt;4 columns&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;h4 id=&#34;spacing&#34; class=link_owner&gt;&#xA;  Spacing&#xA;  &lt;a href=&#34;#spacing&#34; class=&#34;link icon&#34;&gt;&#xA;    &lt;svg&gt;&#xA;      &lt;use xlink:href=&#34;#anchor-link&#34;&gt;&lt;/use&gt;&#xA;    &lt;/svg&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/h4&gt;&#xA;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th&gt;modifier&lt;/th&gt;&#xA;          &lt;th&gt;space&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;mt-1&lt;/td&gt;&#xA;          &lt;td&gt;1.5rem top margin&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;mt-2&lt;/td&gt;&#xA;          &lt;td&gt;3rem top margin&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;mt-3&lt;/td&gt;&#xA;          &lt;td&gt;4.5rem top margin&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;mt-4&lt;/td&gt;&#xA;          &lt;td&gt;6rem top margin&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;use pt-1 ~ pt-4 for top padding&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Leverage Github actions</title>
-      <link>https://docs.devboer.com/docs/compose/github-actions/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://docs.devboer.com/docs/compose/github-actions/</guid>
-      <description>&lt;p&gt;This theme ships with 2 github actions inside the exampleSite folder:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;AWS CI&lt;/li&gt;&#xA;&lt;li&gt;Algolia CI&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h2 id=&#34;aws-ci&#34; class=link_owner&gt;&#xA;  AWS CI&#xA;  &lt;a href=&#34;#aws-ci&#34; class=&#34;link icon&#34;&gt;&#xA;    &lt;svg&gt;&#xA;      &lt;use xlink:href=&#34;#anchor-link&#34;&gt;&lt;/use&gt;&#xA;    &lt;/svg&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;This helps you to autodeploy your hugo website from github to an AWS s3 bucket. Set the secrets in the action accordingly and voila.&lt;/p&gt;&#xA;&lt;h2 id=&#34;algolia-ci&#34; class=link_owner&gt;&#xA;  Algolia CI&#xA;  &lt;a href=&#34;#algolia-ci&#34; class=&#34;link icon&#34;&gt;&#xA;    &lt;svg&gt;&#xA;      &lt;use xlink:href=&#34;#anchor-link&#34;&gt;&lt;/use&gt;&#xA;    &lt;/svg&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;This action will automatically update your algolia search index. No extra npm manual setup will be needed.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Lxc Privilege Conversion</title>
