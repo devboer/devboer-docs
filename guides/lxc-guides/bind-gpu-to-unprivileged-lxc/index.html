@@ -12,7 +12,7 @@
 <title>GPU and unprivileged LXC | devBoer Labs Documentation</title><meta property="og:url" content="https://docs.devboer.com/guides/lxc-guides/bind-gpu-to-unprivileged-lxc/">
   <meta property="og:site_name" content="devBoer Labs Documentation">
   <meta property="og:title" content="GPU and unprivileged LXC">
-  <meta property="og:description" content="Bind GPU to Unprivileged LXC Tutorials Used: TheOrangeOne.net YouTube Video using above tutorial Mount Storage Karvec suggesting libnvidia-encode/decode on guestOS and learned to use -### corresponding with driver version Proxmox Setup Update Proxmox &amp; Reboot Install pve-headers &amp; build-essentials update-initramfs blacklist free nvidia driver download official nvidia driver chmod &#43;x driver ./run install install 32-bit also ignore other prompts edit modules.d files for loading and conf create a rules file reboot verify driver is working with nvidia-smi also could try lshw -C display this will list driver it should say &#39;nvidia&#39; Create CT with ubuntu compatible with jellyfin (18, 20, 22 not 22.10 work) Do not start CT on creation Edit CT conf file with # Allow cgroup access lxc.cgroup.devices.allow: c 195:* rwm lxc.cgroup.devices.allow: c 243:* rwm # Pass through device files lxc.mount.entry: /dev/nvidia0 dev/nvidia0 none bind,optional,create=file lxc.mount.entry: /dev/nvidiactl dev/nvidiactl none bind,optional,create=file lxc.mount.entry: /dev/nvidia-uvm dev/nvidia-uvm none bind,optional,create=file lxc.mount.entry: /dev/nvidia-modeset dev/nvidia-modeset none bind,optional,create=file lxc.mount.entry: /dev/nvidia-uvm-tools dev/nvidia-uvm-tools none bind,optional,create=file ==&#39;cgroup access&#39;== part corresponds with the character files below in ==&#39;device files&#39;==
+  <meta property="og:description" content="Bind GPU to Unprivileged LXC Tutorials Used: TheOrangeOne.net YouTube Video using above tutorial Mount Storage Karvec suggesting libnvidia-encode/decode on guestOS and learned to use -### corresponding with driver version Proxmox Setup Update Proxmox &amp; Reboot Install pve-headers &amp; build-essentials update-initramfs blacklist free nvidia driver download official nvidia driver chmod &#43;x driver ./run install install 32-bit also ignore other prompts edit modules.d files for loading and conf create a rules file reboot verify driver is working with nvidia-smi also could try lshw -C display this will list driver it should say &#39;nvidia&#39; Create CT with ubuntu compatible with jellyfin (18, 20, 22 not 22.10 work) Do not start CT on creation Edit CT conf file with 1# Allow cgroup access 2lxc.cgroup.devices.allow: c 195:* rwm 3lxc.cgroup.devices.allow: c 243:* rwm 4 5# Pass through device files 6lxc.mount.entry: /dev/nvidia0 dev/nvidia0 none bind,optional,create=file 7lxc.mount.entry: /dev/nvidiactl dev/nvidiactl none bind,optional,create=file 8lxc.mount.entry: /dev/nvidia-uvm dev/nvidia-uvm none bind,optional,create=file 9lxc.mount.entry: /dev/nvidia-modeset dev/nvidia-modeset none bind,optional,create=file 10lxc.mount.entry: /dev/nvidia-uvm-tools dev/nvidia-uvm-tools none bind,optional,create=file ==&#39;cgroup access&#39;== part corresponds with the character files below in ==&#39;device files&#39;==
 &#34;195:*&#34; is using a wildcard for the device files. You can also write in this number too.
 Also you can write in more IDs if you notice it changing on reboots to make certain you don&#39;t lose passthrough access.
 Find these IDs using ls -l /dev/nv* and ignore &#39;caps&#39; files.">
@@ -20,25 +20,25 @@ Find these IDs using ls -l /dev/nv* and ignore &#39;caps&#39; files.">
   <meta property="og:type" content="article">
     <meta property="article:section" content="guides">
     <meta property="article:published_time" content="2024-08-28T01:01:28-05:00">
-    <meta property="article:modified_time" content="2025-10-09T07:37:11-05:00">
+    <meta property="article:modified_time" content="2025-10-09T07:40:28-05:00">
 
   <meta itemprop="name" content="GPU and unprivileged LXC">
-  <meta itemprop="description" content="Bind GPU to Unprivileged LXC Tutorials Used: TheOrangeOne.net YouTube Video using above tutorial Mount Storage Karvec suggesting libnvidia-encode/decode on guestOS and learned to use -### corresponding with driver version Proxmox Setup Update Proxmox &amp; Reboot Install pve-headers &amp; build-essentials update-initramfs blacklist free nvidia driver download official nvidia driver chmod &#43;x driver ./run install install 32-bit also ignore other prompts edit modules.d files for loading and conf create a rules file reboot verify driver is working with nvidia-smi also could try lshw -C display this will list driver it should say &#39;nvidia&#39; Create CT with ubuntu compatible with jellyfin (18, 20, 22 not 22.10 work) Do not start CT on creation Edit CT conf file with # Allow cgroup access lxc.cgroup.devices.allow: c 195:* rwm lxc.cgroup.devices.allow: c 243:* rwm # Pass through device files lxc.mount.entry: /dev/nvidia0 dev/nvidia0 none bind,optional,create=file lxc.mount.entry: /dev/nvidiactl dev/nvidiactl none bind,optional,create=file lxc.mount.entry: /dev/nvidia-uvm dev/nvidia-uvm none bind,optional,create=file lxc.mount.entry: /dev/nvidia-modeset dev/nvidia-modeset none bind,optional,create=file lxc.mount.entry: /dev/nvidia-uvm-tools dev/nvidia-uvm-tools none bind,optional,create=file ==&#39;cgroup access&#39;== part corresponds with the character files below in ==&#39;device files&#39;==
+  <meta itemprop="description" content="Bind GPU to Unprivileged LXC Tutorials Used: TheOrangeOne.net YouTube Video using above tutorial Mount Storage Karvec suggesting libnvidia-encode/decode on guestOS and learned to use -### corresponding with driver version Proxmox Setup Update Proxmox &amp; Reboot Install pve-headers &amp; build-essentials update-initramfs blacklist free nvidia driver download official nvidia driver chmod &#43;x driver ./run install install 32-bit also ignore other prompts edit modules.d files for loading and conf create a rules file reboot verify driver is working with nvidia-smi also could try lshw -C display this will list driver it should say &#39;nvidia&#39; Create CT with ubuntu compatible with jellyfin (18, 20, 22 not 22.10 work) Do not start CT on creation Edit CT conf file with 1# Allow cgroup access 2lxc.cgroup.devices.allow: c 195:* rwm 3lxc.cgroup.devices.allow: c 243:* rwm 4 5# Pass through device files 6lxc.mount.entry: /dev/nvidia0 dev/nvidia0 none bind,optional,create=file 7lxc.mount.entry: /dev/nvidiactl dev/nvidiactl none bind,optional,create=file 8lxc.mount.entry: /dev/nvidia-uvm dev/nvidia-uvm none bind,optional,create=file 9lxc.mount.entry: /dev/nvidia-modeset dev/nvidia-modeset none bind,optional,create=file 10lxc.mount.entry: /dev/nvidia-uvm-tools dev/nvidia-uvm-tools none bind,optional,create=file ==&#39;cgroup access&#39;== part corresponds with the character files below in ==&#39;device files&#39;==
 &#34;195:*&#34; is using a wildcard for the device files. You can also write in this number too.
 Also you can write in more IDs if you notice it changing on reboots to make certain you don&#39;t lose passthrough access.
 Find these IDs using ls -l /dev/nv* and ignore &#39;caps&#39; files.">
   <meta itemprop="datePublished" content="2024-08-28T01:01:28-05:00">
-  <meta itemprop="dateModified" content="2025-10-09T07:37:11-05:00">
-  <meta itemprop="wordCount" content="818">
+  <meta itemprop="dateModified" content="2025-10-09T07:40:28-05:00">
+  <meta itemprop="wordCount" content="817">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="GPU and unprivileged LXC">
-  <meta name="twitter:description" content="Bind GPU to Unprivileged LXC Tutorials Used: TheOrangeOne.net YouTube Video using above tutorial Mount Storage Karvec suggesting libnvidia-encode/decode on guestOS and learned to use -### corresponding with driver version Proxmox Setup Update Proxmox &amp; Reboot Install pve-headers &amp; build-essentials update-initramfs blacklist free nvidia driver download official nvidia driver chmod &#43;x driver ./run install install 32-bit also ignore other prompts edit modules.d files for loading and conf create a rules file reboot verify driver is working with nvidia-smi also could try lshw -C display this will list driver it should say &#39;nvidia&#39; Create CT with ubuntu compatible with jellyfin (18, 20, 22 not 22.10 work) Do not start CT on creation Edit CT conf file with # Allow cgroup access lxc.cgroup.devices.allow: c 195:* rwm lxc.cgroup.devices.allow: c 243:* rwm # Pass through device files lxc.mount.entry: /dev/nvidia0 dev/nvidia0 none bind,optional,create=file lxc.mount.entry: /dev/nvidiactl dev/nvidiactl none bind,optional,create=file lxc.mount.entry: /dev/nvidia-uvm dev/nvidia-uvm none bind,optional,create=file lxc.mount.entry: /dev/nvidia-modeset dev/nvidia-modeset none bind,optional,create=file lxc.mount.entry: /dev/nvidia-uvm-tools dev/nvidia-uvm-tools none bind,optional,create=file ==&#39;cgroup access&#39;== part corresponds with the character files below in ==&#39;device files&#39;==
+  <meta name="twitter:description" content="Bind GPU to Unprivileged LXC Tutorials Used: TheOrangeOne.net YouTube Video using above tutorial Mount Storage Karvec suggesting libnvidia-encode/decode on guestOS and learned to use -### corresponding with driver version Proxmox Setup Update Proxmox &amp; Reboot Install pve-headers &amp; build-essentials update-initramfs blacklist free nvidia driver download official nvidia driver chmod &#43;x driver ./run install install 32-bit also ignore other prompts edit modules.d files for loading and conf create a rules file reboot verify driver is working with nvidia-smi also could try lshw -C display this will list driver it should say &#39;nvidia&#39; Create CT with ubuntu compatible with jellyfin (18, 20, 22 not 22.10 work) Do not start CT on creation Edit CT conf file with 1# Allow cgroup access 2lxc.cgroup.devices.allow: c 195:* rwm 3lxc.cgroup.devices.allow: c 243:* rwm 4 5# Pass through device files 6lxc.mount.entry: /dev/nvidia0 dev/nvidia0 none bind,optional,create=file 7lxc.mount.entry: /dev/nvidiactl dev/nvidiactl none bind,optional,create=file 8lxc.mount.entry: /dev/nvidia-uvm dev/nvidia-uvm none bind,optional,create=file 9lxc.mount.entry: /dev/nvidia-modeset dev/nvidia-modeset none bind,optional,create=file 10lxc.mount.entry: /dev/nvidia-uvm-tools dev/nvidia-uvm-tools none bind,optional,create=file ==&#39;cgroup access&#39;== part corresponds with the character files below in ==&#39;device files&#39;==
 &#34;195:*&#34; is using a wildcard for the device files. You can also write in this number too.
 Also you can write in more IDs if you notice it changing on reboots to make certain you don&#39;t lose passthrough access.
 Find these IDs using ls -l /dev/nv* and ignore &#39;caps&#39; files.">
 
 <link rel="stylesheet" href="https://docs.devboer.com/css/styles.4b3745ac57cf6dd871f07bb5872ccf7fe2a524e1620900c4aa251c2492ba6c8e292dbddb2f2ccfe32cf24db99a75587e79d6f922a06787ba287e4a38bec38dd7.css" integrity="sha512-SzdFrFfPbdhx8Hu1hyzPf&#43;KlJOFiCQDEqiUcJJK6bI4pLb3bLyzP4yzyTbmadVh&#43;edb5IqBnh7oofko4vsON1w==">
-<meta name="description" content=" Bind GPU to Unprivileged LXC Tutorials Used: TheOrangeOne.net YouTube Video using above tutorial Mount Storage Karvec suggesting libnvidia-encode/decode on guestOS and learned to use -### corresponding with driver version Proxmox Setup Update Proxmox &amp; Reboot Install pve-headers &amp; build-essentials update-initramfs blacklist free nvidia driver download official nvidia driver chmod &#43;x driver ./run install install 32-bit also ignore other prompts edit modules.d files for loading and conf create a rules file reboot verify driver is working with nvidia-smi also could try lshw -C display this will list driver it should say &#39;nvidia&#39; Create CT with ubuntu compatible with jellyfin (18, 20, 22 not 22.10 work) Do not start CT on creation Edit CT conf file with # Allow cgroup access lxc.cgroup.devices.allow: c 195:* rwm lxc.cgroup.devices.allow: c 243:* rwm # Pass through device files lxc.mount.entry: /dev/nvidia0 dev/nvidia0 none bind,optional,create=file lxc.mount.entry: /dev/nvidiactl dev/nvidiactl none bind,optional,create=file lxc.mount.entry: /dev/nvidia-uvm dev/nvidia-uvm none bind,optional,create=file lxc.mount.entry: /dev/nvidia-modeset dev/nvidia-modeset none bind,optional,create=file lxc.mount.entry: /dev/nvidia-uvm-tools dev/nvidia-uvm-tools none bind,optional,create=file ==&#39;cgroup access&#39;== part corresponds with the character files below in ==&#39;device files&#39;==
+<meta name="description" content=" Bind GPU to Unprivileged LXC Tutorials Used: TheOrangeOne.net YouTube Video using above tutorial Mount Storage Karvec suggesting libnvidia-encode/decode on guestOS and learned to use -### corresponding with driver version Proxmox Setup Update Proxmox &amp; Reboot Install pve-headers &amp; build-essentials update-initramfs blacklist free nvidia driver download official nvidia driver chmod &#43;x driver ./run install install 32-bit also ignore other prompts edit modules.d files for loading and conf create a rules file reboot verify driver is working with nvidia-smi also could try lshw -C display this will list driver it should say &#39;nvidia&#39; Create CT with ubuntu compatible with jellyfin (18, 20, 22 not 22.10 work) Do not start CT on creation Edit CT conf file with 1# Allow cgroup access 2lxc.cgroup.devices.allow: c 195:* rwm 3lxc.cgroup.devices.allow: c 243:* rwm 4 5# Pass through device files 6lxc.mount.entry: /dev/nvidia0 dev/nvidia0 none bind,optional,create=file 7lxc.mount.entry: /dev/nvidiactl dev/nvidiactl none bind,optional,create=file 8lxc.mount.entry: /dev/nvidia-uvm dev/nvidia-uvm none bind,optional,create=file 9lxc.mount.entry: /dev/nvidia-modeset dev/nvidia-modeset none bind,optional,create=file 10lxc.mount.entry: /dev/nvidia-uvm-tools dev/nvidia-uvm-tools none bind,optional,create=file ==&#39;cgroup access&#39;== part corresponds with the character files below in ==&#39;device files&#39;==
 &quot;195:*&quot; is using a wildcard for the device files. You can also write in this number too.
 Also you can write in more IDs if you notice it changing on reboots to make certain you don&#39;t lose passthrough access.
 Find these IDs using ls -l /dev/nv* and ignore &#39;caps&#39; files.
@@ -130,6 +130,14 @@ Find these IDs using ls -l /dev/nv* and ignore &#39;caps&#39; files.
       </ul>
     </li>
   </ul>
+
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#my-full-config">My full config:</a></li>
+      </ul>
+    </li>
+  </ul>
 </nav>
       </section>
   </section>
@@ -192,18 +200,17 @@ Find these IDs using ls -l /dev/nv* and ignore &#39;caps&#39; files.
 <li>Do not start CT on creation</li>
 <li>Edit CT conf file with</li>
 </ul>
-<pre tabindex="0"><code># Allow cgroup access
-lxc.cgroup.devices.allow: c 195:* rwm
-lxc.cgroup.devices.allow: c 243:* rwm
-
-# Pass through device files
-lxc.mount.entry: /dev/nvidia0 dev/nvidia0 none bind,optional,create=file
-lxc.mount.entry: /dev/nvidiactl dev/nvidiactl none bind,optional,create=file
-lxc.mount.entry: /dev/nvidia-uvm dev/nvidia-uvm none bind,optional,create=file
-lxc.mount.entry: /dev/nvidia-modeset dev/nvidia-modeset none bind,optional,create=file
-lxc.mount.entry: /dev/nvidia-uvm-tools dev/nvidia-uvm-tools none bind,optional,create=file
-
-
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="c1"># Allow cgroup access</span>
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl">lxc.cgroup.devices.allow: c 195:* rwm
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl">lxc.cgroup.devices.allow: c 243:* rwm
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl">
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl"><span class="c1"># Pass through device files</span>
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl">lxc.mount.entry: /dev/nvidia0 dev/nvidia0 none bind,optional,create<span class="o">=</span>file
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl">lxc.mount.entry: /dev/nvidiactl dev/nvidiactl none bind,optional,create<span class="o">=</span>file
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl">lxc.mount.entry: /dev/nvidia-uvm dev/nvidia-uvm none bind,optional,create<span class="o">=</span>file
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl">lxc.mount.entry: /dev/nvidia-modeset dev/nvidia-modeset none bind,optional,create<span class="o">=</span>file
+</span></span><span class="line"><span class="ln">10</span><span class="cl">lxc.mount.entry: /dev/nvidia-uvm-tools dev/nvidia-uvm-tools none bind,optional,create<span class="o">=</span>file
+</span></span></code></pre></div>
 <div class="tip">
   <blockquote>
 <p>=='cgroup access'== part corresponds with the character files below in =='device files'==<br>
@@ -212,58 +219,63 @@ Also you can write in more IDs if you notice it changing on reboots to make cert
 Find these IDs using ls -l /dev/nv* and ignore 'caps' files.</p></blockquote>
 </div>
 
-
-### My full config:
-```bash
-#&lt;div align=&#34;center&#34;&gt;
-#  &lt;a href=&#34;https%3A//devboer.com&#34;&gt;
-#    &lt;img src=&#34;https%3A//github.com/devboer/dev.portfolio/blob/main/assets/images/logo-pve-112-by-112px.png?raw=true&#34; alt=&#34;devboer Logo&#34; height=&#34;112&#34;&gt;
-#  &lt;/a&gt;
-#
-#  ## Jellyfin LXC
-#
-#
-#  %F0%9F%8C%8D [External](https%3A//jellyfin.devboer.com) | %F0%9F%8F%A0 [Internal](https%3A//jellyfin.int.devboer.com) | %F0%9F%94%97 [40.20%3A8096](http%3A//10.0.40.20%3A8096) | %F0%9F%93%9A [GitHub](https%3A//github.com/jellyfin/jellyfin) &lt;br/&gt; %F0%9F%93%8E [Documentation](https%3A//jellyfin.org/docs/) | %E2%84%9E [Helper Scripts](https%3A//helper-scripts.com)
-#&lt;/div&gt;
-arch: amd64
-cores: 2
-features: nesting=1
-hostname: jellyfin
-memory: 4096
-# Storage Map Points (mp0 is shared with other containers)
-mp0: /mnt/data/shared-media,mp=/opt/shared-media
-mp1: /mnt/data/app-data/jellyfin,mp=/opt/app-data
-nameserver: 1.1.1.1
-net0: name=eth0,bridge=vmbr0,hwaddr=BC:24:11:84:45:8A,ip=dhcp,tag=40,type=veth
-onboot: 1
-ostype: ubuntu
-rootfs: local-lvm:vm-700-disk-0,size=8G
-startup: order=1
-swap: 512
-tags: media;public
-unprivileged: 1
-# Container UID/GID -&gt; Host UID/GID Mapping
-lxc.idmap: u 0 100000 110
-lxc.idmap: u 110 1086 1
-lxc.idmap: u 111 100111 65425
-lxc.idmap: g 0 100000 118
-lxc.idmap: g 118 1086 1
-lxc.idmap: g 119 100119 65417
-# Device Passthrough Permissions
-lxc.cgroup2.devices.allow: c 195:0 rwm
-lxc.cgroup2.devices.allow: c 195:255 rwm
-lxc.cgroup2.devices.allow: c 195:254 rwm
-lxc.cgroup2.devices.allow: c 236:0 rwm
-lxc.cgroup2.devices.allow: c 236:1 rwm
-lxc.cgroup2.devices.allow: c 10:144 rwm
-# Device Mount Points
-lxc.mount.entry: /dev/nvidia0 dev/nvidia0 none bind,optional,create=file
-lxc.mount.entry: /dev/nvidiactl dev/nvidiactl none bind,optional,create=file
-lxc.mount.entry: /dev/nvidia-modeset dev/nvidia-modeset none bind,optional,create=file
-lxc.mount.entry: /dev/nvidia-uvm dev/nvidia-uvm none bind,optional,create=file
-lxc.mount.entry: /dev/nvidia-uvm-tools dev/nvidia-uvm-tools none bind,optional,create=file
-lxc.mount.entry: /dev/nvram dev/nvram none bind,optional,create=file
-</code></pre><ul>
+<h3 id="my-full-config" class=link_owner>
+  My full config:
+  <a href="#my-full-config" class="link icon">
+    <svg>
+      <use xlink:href="#anchor-link"></use>
+    </svg>
+  </a>
+</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="c1">#&lt;div align=&#34;center&#34;&gt;</span>
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="c1">#  &lt;a href=&#34;https%3A//devboer.com&#34;&gt;</span>
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="c1">#    &lt;img src=&#34;https%3A//github.com/devboer/dev.portfolio/blob/main/assets/images/logo-pve-112-by-112px.png?raw=true&#34; alt=&#34;devboer Logo&#34; height=&#34;112&#34;&gt;</span>
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl"><span class="c1">#  &lt;/a&gt;</span>
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl"><span class="c1">#</span>
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl"><span class="c1">#  ## Jellyfin LXC</span>
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl"><span class="c1">#</span>
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl"><span class="c1">#</span>
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl"><span class="c1">#  %F0%9F%8C%8D [External](https%3A//jellyfin.devboer.com) | %F0%9F%8F%A0 [Internal](https%3A//jellyfin.int.devboer.com) | %F0%9F%94%97 [40.20%3A8096](http%3A//10.0.40.20%3A8096) | %F0%9F%93%9A [GitHub](https%3A//github.com/jellyfin/jellyfin) &lt;br/&gt; %F0%9F%93%8E [Documentation](https%3A//jellyfin.org/docs/) | %E2%84%9E [Helper Scripts](https%3A//helper-scripts.com)</span>
+</span></span><span class="line"><span class="ln">10</span><span class="cl"><span class="c1">#&lt;/div&gt;</span>
+</span></span><span class="line"><span class="ln">11</span><span class="cl">arch: amd64
+</span></span><span class="line"><span class="ln">12</span><span class="cl">cores: <span class="m">2</span>
+</span></span><span class="line"><span class="ln">13</span><span class="cl">features: <span class="nv">nesting</span><span class="o">=</span><span class="m">1</span>
+</span></span><span class="line"><span class="ln">14</span><span class="cl">hostname: jellyfin
+</span></span><span class="line"><span class="ln">15</span><span class="cl">memory: <span class="m">4096</span>
+</span></span><span class="line"><span class="ln">16</span><span class="cl"><span class="c1"># Storage Map Points (mp0 is shared with other containers)</span>
+</span></span><span class="line"><span class="ln">17</span><span class="cl">mp0: /mnt/data/shared-media,mp<span class="o">=</span>/opt/shared-media
+</span></span><span class="line"><span class="ln">18</span><span class="cl">mp1: /mnt/data/app-data/jellyfin,mp<span class="o">=</span>/opt/app-data
+</span></span><span class="line"><span class="ln">19</span><span class="cl">nameserver: 1.1.1.1
+</span></span><span class="line"><span class="ln">20</span><span class="cl">net0: <span class="nv">name</span><span class="o">=</span>eth0,bridge<span class="o">=</span>vmbr0,hwaddr<span class="o">=</span>BC:24:11:84:45:8A,ip<span class="o">=</span>dhcp,tag<span class="o">=</span>40,type<span class="o">=</span>veth
+</span></span><span class="line"><span class="ln">21</span><span class="cl">onboot: <span class="m">1</span>
+</span></span><span class="line"><span class="ln">22</span><span class="cl">ostype: ubuntu
+</span></span><span class="line"><span class="ln">23</span><span class="cl">rootfs: local-lvm:vm-700-disk-0,size<span class="o">=</span>8G
+</span></span><span class="line"><span class="ln">24</span><span class="cl">startup: <span class="nv">order</span><span class="o">=</span><span class="m">1</span>
+</span></span><span class="line"><span class="ln">25</span><span class="cl">swap: <span class="m">512</span>
+</span></span><span class="line"><span class="ln">26</span><span class="cl">tags: media<span class="p">;</span>public
+</span></span><span class="line"><span class="ln">27</span><span class="cl">unprivileged: <span class="m">1</span>
+</span></span><span class="line"><span class="ln">28</span><span class="cl"><span class="c1"># Container UID/GID -&gt; Host UID/GID Mapping</span>
+</span></span><span class="line"><span class="ln">29</span><span class="cl">lxc.idmap: u <span class="m">0</span> <span class="m">100000</span> <span class="m">110</span>
+</span></span><span class="line"><span class="ln">30</span><span class="cl">lxc.idmap: u <span class="m">110</span> <span class="m">1086</span> <span class="m">1</span>
+</span></span><span class="line"><span class="ln">31</span><span class="cl">lxc.idmap: u <span class="m">111</span> <span class="m">100111</span> <span class="m">65425</span>
+</span></span><span class="line"><span class="ln">32</span><span class="cl">lxc.idmap: g <span class="m">0</span> <span class="m">100000</span> <span class="m">118</span>
+</span></span><span class="line"><span class="ln">33</span><span class="cl">lxc.idmap: g <span class="m">118</span> <span class="m">1086</span> <span class="m">1</span>
+</span></span><span class="line"><span class="ln">34</span><span class="cl">lxc.idmap: g <span class="m">119</span> <span class="m">100119</span> <span class="m">65417</span>
+</span></span><span class="line"><span class="ln">35</span><span class="cl"><span class="c1"># Device Passthrough Permissions</span>
+</span></span><span class="line"><span class="ln">36</span><span class="cl">lxc.cgroup2.devices.allow: c 195:0 rwm
+</span></span><span class="line"><span class="ln">37</span><span class="cl">lxc.cgroup2.devices.allow: c 195:255 rwm
+</span></span><span class="line"><span class="ln">38</span><span class="cl">lxc.cgroup2.devices.allow: c 195:254 rwm
+</span></span><span class="line"><span class="ln">39</span><span class="cl">lxc.cgroup2.devices.allow: c 236:0 rwm
+</span></span><span class="line"><span class="ln">40</span><span class="cl">lxc.cgroup2.devices.allow: c 236:1 rwm
+</span></span><span class="line"><span class="ln">41</span><span class="cl">lxc.cgroup2.devices.allow: c 10:144 rwm
+</span></span><span class="line"><span class="ln">42</span><span class="cl"><span class="c1"># Device Mount Points</span>
+</span></span><span class="line"><span class="ln">43</span><span class="cl">lxc.mount.entry: /dev/nvidia0 dev/nvidia0 none bind,optional,create<span class="o">=</span>file
+</span></span><span class="line"><span class="ln">44</span><span class="cl">lxc.mount.entry: /dev/nvidiactl dev/nvidiactl none bind,optional,create<span class="o">=</span>file
+</span></span><span class="line"><span class="ln">45</span><span class="cl">lxc.mount.entry: /dev/nvidia-modeset dev/nvidia-modeset none bind,optional,create<span class="o">=</span>file
+</span></span><span class="line"><span class="ln">46</span><span class="cl">lxc.mount.entry: /dev/nvidia-uvm dev/nvidia-uvm none bind,optional,create<span class="o">=</span>file
+</span></span><span class="line"><span class="ln">47</span><span class="cl">lxc.mount.entry: /dev/nvidia-uvm-tools dev/nvidia-uvm-tools none bind,optional,create<span class="o">=</span>file
+</span></span><span class="line"><span class="ln">48</span><span class="cl">lxc.mount.entry: /dev/nvram dev/nvram none bind,optional,create<span class="o">=</span>file
+</span></span></code></pre></div><ul>
 <li>Boot Container</li>
 <li>Update &amp; Reboot</li>
 <li>Install nvidia drivers with argument <code>--no-kernel-module</code> as container will use host's kernel modules</li>
