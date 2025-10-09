@@ -51,23 +51,23 @@ lxc.mount.entry: /dev/nvidia-uvm-tools dev/nvidia-uvm-tools none bind,optional,c
 {{< /tip >}}
 
 ### My full config:
-```
-\#<div align="center">
-\#  <a href="https%3A//devboer.com">
-\#    <img src="https%3A//github.com/devboer/dev.portfolio/blob/main/assets/images/logo-pve-112-by-112px.png?raw=true" alt="devboer Logo" height="112">
-\#  </a>
-\#
-\#  ## Jellyfin LXC
-\#
-\#
-\#  %F0%9F%8C%8D [External](https%3A//jellyfin.devboer.com) | %F0%9F%8F%A0 [Internal](https%3A//jellyfin.int.devboer.com) | %F0%9F%94%97 [40.20%3A8096](http%3A//10.0.40.20%3A8096) | %F0%9F%93%9A [GitHub](https%3A//github.com/jellyfin/jellyfin) <br/> %F0%9F%93%8E [Documentation](https%3A//jellyfin.org/docs/) | %E2%84%9E [Helper Scripts](https%3A//helper-scripts.com)
-\#</div>
+```bash
+#<div align="center">
+#  <a href="https%3A//devboer.com">
+#    <img src="https%3A//github.com/devboer/dev.portfolio/blob/main/assets/images/logo-pve-112-by-112px.png?raw=true" alt="devboer Logo" height="112">
+#  </a>
+#
+#  ## Jellyfin LXC
+#
+#
+#  %F0%9F%8C%8D [External](https%3A//jellyfin.devboer.com) | %F0%9F%8F%A0 [Internal](https%3A//jellyfin.int.devboer.com) | %F0%9F%94%97 [40.20%3A8096](http%3A//10.0.40.20%3A8096) | %F0%9F%93%9A [GitHub](https%3A//github.com/jellyfin/jellyfin) <br/> %F0%9F%93%8E [Documentation](https%3A//jellyfin.org/docs/) | %E2%84%9E [Helper Scripts](https%3A//helper-scripts.com)
+#</div>
 arch: amd64
 cores: 2
 features: nesting=1
 hostname: jellyfin
 memory: 4096
-\# Storage Map Points (mp0 is shared with other containers)
+# Storage Map Points (mp0 is shared with other containers)
 mp0: /mnt/data/shared-media,mp=/opt/shared-media
 mp1: /mnt/data/app-data/jellyfin,mp=/opt/app-data
 nameserver: 1.1.1.1
@@ -79,21 +79,21 @@ startup: order=1
 swap: 512
 tags: media;public
 unprivileged: 1
-\# Container UID/GID -> Host UID/GID Mapping
+# Container UID/GID -> Host UID/GID Mapping
 lxc.idmap: u 0 100000 110
 lxc.idmap: u 110 1086 1
 lxc.idmap: u 111 100111 65425
 lxc.idmap: g 0 100000 118
 lxc.idmap: g 118 1086 1
 lxc.idmap: g 119 100119 65417
-\# Device Passthrough Permissions
+# Device Passthrough Permissions
 lxc.cgroup2.devices.allow: c 195:0 rwm
 lxc.cgroup2.devices.allow: c 195:255 rwm
 lxc.cgroup2.devices.allow: c 195:254 rwm
 lxc.cgroup2.devices.allow: c 236:0 rwm
 lxc.cgroup2.devices.allow: c 236:1 rwm
 lxc.cgroup2.devices.allow: c 10:144 rwm
-\# Device Mount Points
+# Device Mount Points
 lxc.mount.entry: /dev/nvidia0 dev/nvidia0 none bind,optional,create=file
 lxc.mount.entry: /dev/nvidiactl dev/nvidiactl none bind,optional,create=file
 lxc.mount.entry: /dev/nvidia-modeset dev/nvidia-modeset none bind,optional,create=file
