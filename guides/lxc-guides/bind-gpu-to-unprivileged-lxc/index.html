@@ -20,7 +20,7 @@ Find these IDs using ls -l /dev/nv* and ignore &#39;caps&#39; files.">
   <meta property="og:type" content="article">
     <meta property="article:section" content="guides">
     <meta property="article:published_time" content="2024-08-28T01:01:28-05:00">
-    <meta property="article:modified_time" content="2025-10-09T07:28:10-05:00">
+    <meta property="article:modified_time" content="2025-10-09T07:37:11-05:00">
 
   <meta itemprop="name" content="GPU and unprivileged LXC">
   <meta itemprop="description" content="Bind GPU to Unprivileged LXC Tutorials Used: TheOrangeOne.net YouTube Video using above tutorial Mount Storage Karvec suggesting libnvidia-encode/decode on guestOS and learned to use -### corresponding with driver version Proxmox Setup Update Proxmox &amp; Reboot Install pve-headers &amp; build-essentials update-initramfs blacklist free nvidia driver download official nvidia driver chmod &#43;x driver ./run install install 32-bit also ignore other prompts edit modules.d files for loading and conf create a rules file reboot verify driver is working with nvidia-smi also could try lshw -C display this will list driver it should say &#39;nvidia&#39; Create CT with ubuntu compatible with jellyfin (18, 20, 22 not 22.10 work) Do not start CT on creation Edit CT conf file with # Allow cgroup access lxc.cgroup.devices.allow: c 195:* rwm lxc.cgroup.devices.allow: c 243:* rwm # Pass through device files lxc.mount.entry: /dev/nvidia0 dev/nvidia0 none bind,optional,create=file lxc.mount.entry: /dev/nvidiactl dev/nvidiactl none bind,optional,create=file lxc.mount.entry: /dev/nvidia-uvm dev/nvidia-uvm none bind,optional,create=file lxc.mount.entry: /dev/nvidia-modeset dev/nvidia-modeset none bind,optional,create=file lxc.mount.entry: /dev/nvidia-uvm-tools dev/nvidia-uvm-tools none bind,optional,create=file ==&#39;cgroup access&#39;== part corresponds with the character files below in ==&#39;device files&#39;==
@@ -28,8 +28,8 @@ Find these IDs using ls -l /dev/nv* and ignore &#39;caps&#39; files.">
 Also you can write in more IDs if you notice it changing on reboots to make certain you don&#39;t lose passthrough access.
 Find these IDs using ls -l /dev/nv* and ignore &#39;caps&#39; files.">
   <meta itemprop="datePublished" content="2024-08-28T01:01:28-05:00">
-  <meta itemprop="dateModified" content="2025-10-09T07:28:10-05:00">
-  <meta itemprop="wordCount" content="866">
+  <meta itemprop="dateModified" content="2025-10-09T07:37:11-05:00">
+  <meta itemprop="wordCount" content="818">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="GPU and unprivileged LXC">
   <meta name="twitter:description" content="Bind GPU to Unprivileged LXC Tutorials Used: TheOrangeOne.net YouTube Video using above tutorial Mount Storage Karvec suggesting libnvidia-encode/decode on guestOS and learned to use -### corresponding with driver version Proxmox Setup Update Proxmox &amp; Reboot Install pve-headers &amp; build-essentials update-initramfs blacklist free nvidia driver download official nvidia driver chmod &#43;x driver ./run install install 32-bit also ignore other prompts edit modules.d files for loading and conf create a rules file reboot verify driver is working with nvidia-smi also could try lshw -C display this will list driver it should say &#39;nvidia&#39; Create CT with ubuntu compatible with jellyfin (18, 20, 22 not 22.10 work) Do not start CT on creation Edit CT conf file with # Allow cgroup access lxc.cgroup.devices.allow: c 195:* rwm lxc.cgroup.devices.allow: c 243:* rwm # Pass through device files lxc.mount.entry: /dev/nvidia0 dev/nvidia0 none bind,optional,create=file lxc.mount.entry: /dev/nvidiactl dev/nvidiactl none bind,optional,create=file lxc.mount.entry: /dev/nvidia-uvm dev/nvidia-uvm none bind,optional,create=file lxc.mount.entry: /dev/nvidia-modeset dev/nvidia-modeset none bind,optional,create=file lxc.mount.entry: /dev/nvidia-uvm-tools dev/nvidia-uvm-tools none bind,optional,create=file ==&#39;cgroup access&#39;== part corresponds with the character files below in ==&#39;device files&#39;==
@@ -214,16 +214,17 @@ Find these IDs using ls -l /dev/nv* and ignore 'caps' files.</p></blockquote>
 
 
 ### My full config:
-</code></pre><p>#<div align="center">
-#  <a href="https%3A//devboer.com">
-#    <img src="https%3A//github.com/devboer/dev.portfolio/blob/main/assets/images/logo-pve-112-by-112px.png?raw=true" alt="devboer Logo" height="112">
-#  </a>
+```bash
+#&lt;div align=&#34;center&#34;&gt;
+#  &lt;a href=&#34;https%3A//devboer.com&#34;&gt;
+#    &lt;img src=&#34;https%3A//github.com/devboer/dev.portfolio/blob/main/assets/images/logo-pve-112-by-112px.png?raw=true&#34; alt=&#34;devboer Logo&#34; height=&#34;112&#34;&gt;
+#  &lt;/a&gt;
 #
 #  ## Jellyfin LXC
 #
 #
-#  %F0%9F%8C%8D <a href="https%3A//jellyfin.devboer.com">External</a> | %F0%9F%8F%A0 <a href="https%3A//jellyfin.int.devboer.com">Internal</a> | %F0%9F%94%97 <a href="http%3A//10.0.40.20%3A8096">40.20%3A8096</a> | %F0%9F%93%9A <a href="https%3A//github.com/jellyfin/jellyfin">GitHub</a> <br/> %F0%9F%93%8E <a href="https%3A//jellyfin.org/docs/">Documentation</a> | %E2%84%9E <a href="https%3A//helper-scripts.com">Helper Scripts</a>
-#</div>
+#  %F0%9F%8C%8D [External](https%3A//jellyfin.devboer.com) | %F0%9F%8F%A0 [Internal](https%3A//jellyfin.int.devboer.com) | %F0%9F%94%97 [40.20%3A8096](http%3A//10.0.40.20%3A8096) | %F0%9F%93%9A [GitHub](https%3A//github.com/jellyfin/jellyfin) &lt;br/&gt; %F0%9F%93%8E [Documentation](https%3A//jellyfin.org/docs/) | %E2%84%9E [Helper Scripts](https%3A//helper-scripts.com)
+#&lt;/div&gt;
 arch: amd64
 cores: 2
 features: nesting=1
@@ -261,63 +262,117 @@ lxc.mount.entry: /dev/nvidiactl dev/nvidiactl none bind,optional,create=file
 lxc.mount.entry: /dev/nvidia-modeset dev/nvidia-modeset none bind,optional,create=file
 lxc.mount.entry: /dev/nvidia-uvm dev/nvidia-uvm none bind,optional,create=file
 lxc.mount.entry: /dev/nvidia-uvm-tools dev/nvidia-uvm-tools none bind,optional,create=file
-lxc.mount.entry: /dev/nvram dev/nvram none bind,optional,create=file</p>
-<pre tabindex="0"><code>- Boot Container   
-- Update &amp; Reboot   
-- Install nvidia drivers with argument `--no-kernel-module` as container will use host&#39;s kernel modules   
-- Again ignore messages and install 32-bit compatibilities   
-- Install `nvtop`, `libnvidia-encode-525` (this will include -decode) ⟵ This needs to match Driver version   
-- `update initramfs -u`   
-- reboot   
-- Now container and hypervisor are in sync on driver versions.   
-- Test (verify) `nvidia-smi`   
-   
-&gt; [!Note]   
-&gt; You can only see processes running from host with command nvidia-smi while on the guest you can use nvtop   
-
-These were the steps I used.... to ready container for hardware transcoding.   
-# Jellyfin installation   
-Steps followed from here [here](https://jellyfin.org/docs/general/installation/linux/#ubuntu-repository)   
+lxc.mount.entry: /dev/nvram dev/nvram none bind,optional,create=file
+</code></pre><ul>
+<li>Boot Container</li>
+<li>Update &amp; Reboot</li>
+<li>Install nvidia drivers with argument <code>--no-kernel-module</code> as container will use host's kernel modules</li>
+<li>Again ignore messages and install 32-bit compatibilities</li>
+<li>Install <code>nvtop</code>, <code>libnvidia-encode-525</code> (this will include -decode) ⟵ This needs to match Driver version</li>
+<li><code>update initramfs -u</code></li>
+<li>reboot</li>
+<li>Now container and hypervisor are in sync on driver versions.</li>
+<li>Test (verify) <code>nvidia-smi</code></li>
+</ul>
+<blockquote>
+<p>[!Note]<br>
+You can only see processes running from host with command nvidia-smi while on the guest you can use nvtop</p></blockquote>
+<p>These were the steps I used.... to ready container for hardware transcoding.</p>
+<h1 id="jellyfin-installation" class=link_owner>
+  Jellyfin installation
+  <a href="#jellyfin-installation" class="link icon">
+    <svg>
+      <use xlink:href="#anchor-link"></use>
+    </svg>
+  </a>
+</h1>
+<p>Steps followed from here <a href="https://jellyfin.org/docs/general/installation/linux/#ubuntu-repository">here</a><br>
 You can use the script or do the scripts instructions by hand from the steps below script.
-`curl https://repo.jellyfin.org/install-debuntu.sh \| sudo bash`
+<code>curl https://repo.jellyfin.org/install-debuntu.sh \| sudo bash</code>
 or
-`wget -O- https://repo.jellyfin.org/install-debuntu.sh \| sudo bash`   
-I edited out &#39;sudo&#39; as I was doing this from root.   
-   
-Some LXC packages that nvidia driver installer suggested…. libglvnd-dev, pkg-config, and libvulkan1   
-Host modifications are missing in this guide or rather details. I&#39;m sure they are in the links above but… why   
-   
-As of Mar 31, 2024…. they still match config and on both guest and host have same driver version but I have an error on &#39;nvidia-smi&#39; command on guest side. Reboot?   
+<code>wget -O- https://repo.jellyfin.org/install-debuntu.sh \| sudo bash</code><br>
+I edited out 'sudo' as I was doing this from root.</p>
+<p>Some LXC packages that nvidia driver installer suggested…. libglvnd-dev, pkg-config, and libvulkan1<br>
+Host modifications are missing in this guide or rather details. I'm sure they are in the links above but… why</p>
+<p>As of Mar 31, 2024…. they still match config and on both guest and host have same driver version but I have an error on 'nvidia-smi' command on guest side. Reboot?<br>
 crw-rw-rw-  195,254 root root  31 Mar 02:31  /dev/nvidia-modeset
 crw-rw-rw-    237,0 root root  31 Mar 02:31  /dev/nvidia-uvm
 crw-rw-rw-    237,1 root root  31 Mar 02:31  /dev/nvidia-uvm-tools
 crw-rw-rw-    195,0 root root  31 Mar 02:31  /dev/nvidia0
 crw-rw-rw-  195,255 root root  31 Mar 02:31  /dev/nvidiactl
-crw———-   10,144 root root  27 Mar 19:14  /dev/nvram   
+crw———-   10,144 root root  27 Mar 19:14  /dev/nvram<br>
 /dev/nvidia-caps:
 Permissions  Size User Group Date Modified Name
 cr————  240,1 root root  31 Mar 02:31  nvidia-cap1
-cr—r—r—  240,2 root root  31 Mar 02:31  nvidia-cap2   
-   
-Decoding Matrix   
-|                BOARD | FAMILY | NVDEC Generation | Desktop/Mobile | Number of Chips | Total # of NVDEC | MPEG-1 | MPEG-2 | VC-1 | VP8 | VP9 8 Bit | VP9 10 Bit | VP9 12 Bit | H.264(AVCHD) | H.265 (HEVC) 4:2:0  8 Bit | H.265 (HEVC) 4:2:0 10 Bit | H.265 (HEVC) 4:2:0 12 Bit | H.265 (HEVC) 4:4:4 8 Bit | H.265 (HEVC) 4:4:4 10 Bit | H.265 (HEVC) 4:4:4 12 Bit | AV1 8 Bit | AV1 10 Bit |
-|:---------------------|:-------|:-----------------|:---------------|:----------------|:-----------------|:-------|:-------|:-----|:----|:----------|:-----------|:-----------|:-------------|:--------------------------|:--------------------------|:--------------------------|:-------------------------|:--------------------------|:--------------------------|:----------|:-----------|
-| Quadro P2000 / P2200 | Pascal |          3rd Gen |              D |               1 |                1 |    YES |    YES |  YES |  NO |       YES |        YES |        YES |          YES |                       YES |                       YES |                       YES |                       NO |                        NO |                        NO |        NO |         NO |
+cr—r—r—  240,2 root root  31 Mar 02:31  nvidia-cap2</p>
+<p>Decoding Matrix</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">BOARD</th>
+          <th style="text-align: left">FAMILY</th>
+          <th style="text-align: left">NVDEC Generation</th>
+          <th style="text-align: left">Desktop/Mobile</th>
+          <th style="text-align: left">Number of Chips</th>
+          <th style="text-align: left">Total # of NVDEC</th>
+          <th style="text-align: left">MPEG-1</th>
+          <th style="text-align: left">MPEG-2</th>
+          <th style="text-align: left">VC-1</th>
+          <th style="text-align: left">VP8</th>
+          <th style="text-align: left">VP9 8 Bit</th>
+          <th style="text-align: left">VP9 10 Bit</th>
+          <th style="text-align: left">VP9 12 Bit</th>
+          <th style="text-align: left">H.264(AVCHD)</th>
+          <th style="text-align: left">H.265 (HEVC) 4:2:0  8 Bit</th>
+          <th style="text-align: left">H.265 (HEVC) 4:2:0 10 Bit</th>
+          <th style="text-align: left">H.265 (HEVC) 4:2:0 12 Bit</th>
+          <th style="text-align: left">H.265 (HEVC) 4:4:4 8 Bit</th>
+          <th style="text-align: left">H.265 (HEVC) 4:4:4 10 Bit</th>
+          <th style="text-align: left">H.265 (HEVC) 4:4:4 12 Bit</th>
+          <th style="text-align: left">AV1 8 Bit</th>
+          <th style="text-align: left">AV1 10 Bit</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">Quadro P2000 / P2200</td>
+          <td style="text-align: left">Pascal</td>
+          <td style="text-align: left">3rd Gen</td>
+          <td style="text-align: left">D</td>
+          <td style="text-align: left">1</td>
+          <td style="text-align: left">1</td>
+          <td style="text-align: left">YES</td>
+          <td style="text-align: left">YES</td>
+          <td style="text-align: left">YES</td>
+          <td style="text-align: left">NO</td>
+          <td style="text-align: left">YES</td>
+          <td style="text-align: left">YES</td>
+          <td style="text-align: left">YES</td>
+          <td style="text-align: left">YES</td>
+          <td style="text-align: left">YES</td>
+          <td style="text-align: left">YES</td>
+          <td style="text-align: left">YES</td>
+          <td style="text-align: left">NO</td>
+          <td style="text-align: left">NO</td>
+          <td style="text-align: left">NO</td>
+          <td style="text-align: left">NO</td>
+          <td style="text-align: left">NO</td>
+      </tr>
+  </tbody>
+</table>
+<p>Translation on Jellyfin Playback NVIDIA NVENC Decoding checks<br>
+[ x ] H264<br>
+[ x ] HEVC<br>
+[ x ] MPEG2<br>
+[ ? ] MPEG4<br>
+[ x ] VC1<br>
+[ - ] VP8<br>
+[ x ] VP9<br>
+[ - ] AV1<br>
+[ ? ] HEVC 10bit<br>
+[ x ] VP9 10bit</p>
+<p><a href="https://developer.nvidia.com/video-encode-and-decode-gpu-support-matrix-new">GPU Matrix Source</a></p>
 
-Translation on Jellyfin Playback NVIDIA NVENC Decoding checks   
-[ x ] H264   
-[ x ] HEVC   
-[ x ] MPEG2   
-[ ? ] MPEG4   
-[ x ] VC1   
-[ - ] VP8   
-[ x ] VP9   
-[ - ] AV1   
-[ ? ] HEVC 10bit   
-[ x ] VP9 10bit   
-   
-[GPU Matrix Source](https://developer.nvidia.com/video-encode-and-decode-gpu-support-matrix-new) 
-</code></pre>
     <div class="pager">
   
     
