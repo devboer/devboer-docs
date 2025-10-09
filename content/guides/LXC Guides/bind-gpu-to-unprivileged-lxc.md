@@ -31,7 +31,7 @@ draft: false
 - Do not start CT on creation   
 - Edit CT conf file with   
    
-```
+```bash
 # Allow cgroup access
 lxc.cgroup.devices.allow: c 195:* rwm
 lxc.cgroup.devices.allow: c 243:* rwm
@@ -42,7 +42,7 @@ lxc.mount.entry: /dev/nvidiactl dev/nvidiactl none bind,optional,create=file
 lxc.mount.entry: /dev/nvidia-uvm dev/nvidia-uvm none bind,optional,create=file
 lxc.mount.entry: /dev/nvidia-modeset dev/nvidia-modeset none bind,optional,create=file
 lxc.mount.entry: /dev/nvidia-uvm-tools dev/nvidia-uvm-tools none bind,optional,create=file
-
+```
 {{< tip >}}
 > =='cgroup access'== part corresponds with the character files below in =='device files'==   
 > "195:\*" is using a wildcard for the device files. You can also write in this number too.   
