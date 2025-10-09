@@ -1,3 +1,5 @@
-## Guide
+## devBoer Labs Journals
 
-This guide covers the necessary bits. As the project evolves, it will only become more comprehensive
+My corner of the web to journal my homelab journey into becoming a system administrator. 
+
+There is so much to Proxmox that will satisfy my thirst for knowledge for years. 
