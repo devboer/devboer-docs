@@ -20,7 +20,7 @@ Find these IDs using ls -l /dev/nv* and ignore &#39;caps&#39; files.">
   <meta property="og:type" content="article">
     <meta property="article:section" content="guides">
     <meta property="article:published_time" content="2024-08-28T01:01:28-05:00">
-    <meta property="article:modified_time" content="2025-10-09T07:20:11-05:00">
+    <meta property="article:modified_time" content="2025-10-09T07:28:10-05:00">
 
   <meta itemprop="name" content="GPU and unprivileged LXC">
   <meta itemprop="description" content="Bind GPU to Unprivileged LXC Tutorials Used: TheOrangeOne.net YouTube Video using above tutorial Mount Storage Karvec suggesting libnvidia-encode/decode on guestOS and learned to use -### corresponding with driver version Proxmox Setup Update Proxmox &amp; Reboot Install pve-headers &amp; build-essentials update-initramfs blacklist free nvidia driver download official nvidia driver chmod &#43;x driver ./run install install 32-bit also ignore other prompts edit modules.d files for loading and conf create a rules file reboot verify driver is working with nvidia-smi also could try lshw -C display this will list driver it should say &#39;nvidia&#39; Create CT with ubuntu compatible with jellyfin (18, 20, 22 not 22.10 work) Do not start CT on creation Edit CT conf file with # Allow cgroup access lxc.cgroup.devices.allow: c 195:* rwm lxc.cgroup.devices.allow: c 243:* rwm # Pass through device files lxc.mount.entry: /dev/nvidia0 dev/nvidia0 none bind,optional,create=file lxc.mount.entry: /dev/nvidiactl dev/nvidiactl none bind,optional,create=file lxc.mount.entry: /dev/nvidia-uvm dev/nvidia-uvm none bind,optional,create=file lxc.mount.entry: /dev/nvidia-modeset dev/nvidia-modeset none bind,optional,create=file lxc.mount.entry: /dev/nvidia-uvm-tools dev/nvidia-uvm-tools none bind,optional,create=file ==&#39;cgroup access&#39;== part corresponds with the character files below in ==&#39;device files&#39;==
@@ -28,8 +28,8 @@ Find these IDs using ls -l /dev/nv* and ignore &#39;caps&#39; files.">
 Also you can write in more IDs if you notice it changing on reboots to make certain you don&#39;t lose passthrough access.
 Find these IDs using ls -l /dev/nv* and ignore &#39;caps&#39; files.">
   <meta itemprop="datePublished" content="2024-08-28T01:01:28-05:00">
-  <meta itemprop="dateModified" content="2025-10-09T07:20:11-05:00">
-  <meta itemprop="wordCount" content="854">
+  <meta itemprop="dateModified" content="2025-10-09T07:28:10-05:00">
+  <meta itemprop="wordCount" content="866">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="GPU and unprivileged LXC">
   <meta name="twitter:description" content="Bind GPU to Unprivileged LXC Tutorials Used: TheOrangeOne.net YouTube Video using above tutorial Mount Storage Karvec suggesting libnvidia-encode/decode on guestOS and learned to use -### corresponding with driver version Proxmox Setup Update Proxmox &amp; Reboot Install pve-headers &amp; build-essentials update-initramfs blacklist free nvidia driver download official nvidia driver chmod &#43;x driver ./run install install 32-bit also ignore other prompts edit modules.d files for loading and conf create a rules file reboot verify driver is working with nvidia-smi also could try lshw -C display this will list driver it should say &#39;nvidia&#39; Create CT with ubuntu compatible with jellyfin (18, 20, 22 not 22.10 work) Do not start CT on creation Edit CT conf file with # Allow cgroup access lxc.cgroup.devices.allow: c 195:* rwm lxc.cgroup.devices.allow: c 243:* rwm # Pass through device files lxc.mount.entry: /dev/nvidia0 dev/nvidia0 none bind,optional,create=file lxc.mount.entry: /dev/nvidiactl dev/nvidiactl none bind,optional,create=file lxc.mount.entry: /dev/nvidia-uvm dev/nvidia-uvm none bind,optional,create=file lxc.mount.entry: /dev/nvidia-modeset dev/nvidia-modeset none bind,optional,create=file lxc.mount.entry: /dev/nvidia-uvm-tools dev/nvidia-uvm-tools none bind,optional,create=file ==&#39;cgroup access&#39;== part corresponds with the character files below in ==&#39;device files&#39;==
@@ -214,86 +214,23 @@ Find these IDs using ls -l /dev/nv* and ignore 'caps' files.</p></blockquote>
 
 
 ### My full config:
-</code></pre><p>#<div align="center"></p>
-<h1 id="" class=link_owner>
-  <a href="https%3A//devboer.com">
-  <a href="#" class="link icon">
-    <svg>
-      <use xlink:href="#anchor-link"></use>
-    </svg>
-  </a>
-</h1>
-<h1 id="" class=link_owner>
-  <img src="https%3A//github.com/devboer/dev.portfolio/blob/main/assets/images/logo-pve-112-by-112px.png?raw=true" alt="devboer Logo" height="112">
-  <a href="#" class="link icon">
-    <svg>
-      <use xlink:href="#anchor-link"></use>
-    </svg>
-  </a>
-</h1>
-<h1 id="" class=link_owner>
-  </a>
-  <a href="#" class="link icon">
-    <svg>
-      <use xlink:href="#anchor-link"></use>
-    </svg>
-  </a>
-</h1>
-<h1 id="" class=link_owner>
-  
-  <a href="#" class="link icon">
-    <svg>
-      <use xlink:href="#anchor-link"></use>
-    </svg>
-  </a>
-</h1>
-<h1 id="-jellyfin-lxc" class=link_owner>
-  ## Jellyfin LXC
-  <a href="#-jellyfin-lxc" class="link icon">
-    <svg>
-      <use xlink:href="#anchor-link"></use>
-    </svg>
-  </a>
-</h1>
-<h1 id="" class=link_owner>
-  
-  <a href="#" class="link icon">
-    <svg>
-      <use xlink:href="#anchor-link"></use>
-    </svg>
-  </a>
-</h1>
-<h1 id="" class=link_owner>
-  
-  <a href="#" class="link icon">
-    <svg>
-      <use xlink:href="#anchor-link"></use>
-    </svg>
-  </a>
-</h1>
-<h1 id="f09f8c8d-external--f09f8fa0-internal--f09f9497-40203a8096--f09f939a-github--f09f938e-documentation--e2849e-helper-scripts" class=link_owner>
-  %F0%9F%8C%8D <a href="https%3A//jellyfin.devboer.com">External</a> | %F0%9F%8F%A0 <a href="https%3A//jellyfin.int.devboer.com">Internal</a> | %F0%9F%94%97 <a href="http%3A//10.0.40.20%3A8096">40.20%3A8096</a> | %F0%9F%93%9A <a href="https%3A//github.com/jellyfin/jellyfin">GitHub</a> <br/> %F0%9F%93%8E <a href="https%3A//jellyfin.org/docs/">Documentation</a> | %E2%84%9E <a href="https%3A//helper-scripts.com">Helper Scripts</a>
-  <a href="#f09f8c8d-external--f09f8fa0-internal--f09f9497-40203a8096--f09f939a-github--f09f938e-documentation--e2849e-helper-scripts" class="link icon">
-    <svg>
-      <use xlink:href="#anchor-link"></use>
-    </svg>
-  </a>
-</h1>
-<p>#</div>
+</code></pre><p>#<div align="center">
+#  <a href="https%3A//devboer.com">
+#    <img src="https%3A//github.com/devboer/dev.portfolio/blob/main/assets/images/logo-pve-112-by-112px.png?raw=true" alt="devboer Logo" height="112">
+#  </a>
+#
+#  ## Jellyfin LXC
+#
+#
+#  %F0%9F%8C%8D <a href="https%3A//jellyfin.devboer.com">External</a> | %F0%9F%8F%A0 <a href="https%3A//jellyfin.int.devboer.com">Internal</a> | %F0%9F%94%97 <a href="http%3A//10.0.40.20%3A8096">40.20%3A8096</a> | %F0%9F%93%9A <a href="https%3A//github.com/jellyfin/jellyfin">GitHub</a> <br/> %F0%9F%93%8E <a href="https%3A//jellyfin.org/docs/">Documentation</a> | %E2%84%9E <a href="https%3A//helper-scripts.com">Helper Scripts</a>
+#</div>
 arch: amd64
 cores: 2
 features: nesting=1
 hostname: jellyfin
-memory: 4096</p>
-<h1 id="storage-map-points-mp0-is-shared-with-other-containers" class=link_owner>
-  Storage Map Points (mp0 is shared with other containers)
-  <a href="#storage-map-points-mp0-is-shared-with-other-containers" class="link icon">
-    <svg>
-      <use xlink:href="#anchor-link"></use>
-    </svg>
-  </a>
-</h1>
-<p>mp0: /mnt/data/shared-media,mp=/opt/shared-media
+memory: 4096
+# Storage Map Points (mp0 is shared with other containers)
+mp0: /mnt/data/shared-media,mp=/opt/shared-media
 mp1: /mnt/data/app-data/jellyfin,mp=/opt/app-data
 nameserver: 1.1.1.1
 net0: name=eth0,bridge=vmbr0,hwaddr=BC:24:11:84:45:8A,ip=dhcp,tag=40,type=veth
@@ -303,44 +240,23 @@ rootfs: local-lvm:vm-700-disk-0,size=8G
 startup: order=1
 swap: 512
 tags: media;public
-unprivileged: 1</p>
-<h1 id="container-uidgid---host-uidgid-mapping" class=link_owner>
-  Container UID/GID -&gt; Host UID/GID Mapping
-  <a href="#container-uidgid---host-uidgid-mapping" class="link icon">
-    <svg>
-      <use xlink:href="#anchor-link"></use>
-    </svg>
-  </a>
-</h1>
-<p>lxc.idmap: u 0 100000 110
+unprivileged: 1
+# Container UID/GID -&gt; Host UID/GID Mapping
+lxc.idmap: u 0 100000 110
 lxc.idmap: u 110 1086 1
 lxc.idmap: u 111 100111 65425
 lxc.idmap: g 0 100000 118
 lxc.idmap: g 118 1086 1
-lxc.idmap: g 119 100119 65417</p>
-<h1 id="device-passthrough-permissions" class=link_owner>
-  Device Passthrough Permissions
-  <a href="#device-passthrough-permissions" class="link icon">
-    <svg>
-      <use xlink:href="#anchor-link"></use>
-    </svg>
-  </a>
-</h1>
-<p>lxc.cgroup2.devices.allow: c 195:0 rwm
+lxc.idmap: g 119 100119 65417
+# Device Passthrough Permissions
+lxc.cgroup2.devices.allow: c 195:0 rwm
 lxc.cgroup2.devices.allow: c 195:255 rwm
 lxc.cgroup2.devices.allow: c 195:254 rwm
 lxc.cgroup2.devices.allow: c 236:0 rwm
 lxc.cgroup2.devices.allow: c 236:1 rwm
-lxc.cgroup2.devices.allow: c 10:144 rwm</p>
-<h1 id="device-mount-points" class=link_owner>
-  Device Mount Points
-  <a href="#device-mount-points" class="link icon">
-    <svg>
-      <use xlink:href="#anchor-link"></use>
-    </svg>
-  </a>
-</h1>
-<p>lxc.mount.entry: /dev/nvidia0 dev/nvidia0 none bind,optional,create=file
+lxc.cgroup2.devices.allow: c 10:144 rwm
+# Device Mount Points
+lxc.mount.entry: /dev/nvidia0 dev/nvidia0 none bind,optional,create=file
 lxc.mount.entry: /dev/nvidiactl dev/nvidiactl none bind,optional,create=file
 lxc.mount.entry: /dev/nvidia-modeset dev/nvidia-modeset none bind,optional,create=file
 lxc.mount.entry: /dev/nvidia-uvm dev/nvidia-uvm none bind,optional,create=file
