@@ -31,7 +31,7 @@ draft: false
 - Do not start CT on creation   
 - Edit CT conf file with   
    
-```bash
+```bash 
 # Allow cgroup access
 lxc.cgroup.devices.allow: c 195:* rwm
 lxc.cgroup.devices.allow: c 243:* rwm
