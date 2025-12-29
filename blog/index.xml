@@ -8,6 +8,13 @@
     <language>en</language>
     <atom:link href="https://docs.devboer.com/blog/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Journal Entry #2</title>
+      <link>https://docs.devboer.com/blog/2025-12-29-thoughts/</link>
+      <pubDate>Mon, 29 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>https://docs.devboer.com/blog/2025-12-29-thoughts/</guid>
+      <description>&lt;h2 id=&#34;a-different-temptation-won&#34; class=link_owner&gt;&#xA;  A Different Temptation Won&#xA;  &lt;a href=&#34;#a-different-temptation-won&#34; class=&#34;link icon&#34;&gt;&#xA;    &lt;svg&gt;&#xA;      &lt;use xlink:href=&#34;#anchor-link&#34;&gt;&lt;/use&gt;&#xA;    &lt;/svg&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;It all started, really, with two bad habits meeting at the worst possible time: tight cash flow and terrible digital hygiene. I don’t back up the way I should, and I don’t have that automatic reflex of, &lt;em&gt;“Hey, maybe back this container up before smashing the update button.”&lt;/em&gt; Now I’m sitting here with my main Proxmox node on life support, bootable USB with PVE 9.1.1 in hand, trying to coax it back to life.&lt;/p&gt;</description>
+    </item>
+    <item>
       <title>Journal Entry #1</title>
       <link>https://docs.devboer.com/blog/2025-10-09-thoughts/</link>
       <pubDate>Thu, 09 Oct 2025 00:00:00 +0000</pubDate>
