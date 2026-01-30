@@ -18,3 +18,7 @@ path = 'page'
 
 [outputs]
 home = ["HTML", "RSS", "JSON"]
+
+[params]
+mobileNavigation = "right" # Mobile nav menu will open to the left of the screen.
+
