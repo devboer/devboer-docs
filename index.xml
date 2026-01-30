@@ -72,9 +72,9 @@
     </item>
     <item>
       <title>Media Woes</title>
-      <link>https://docs.devboer.com/blog/2025-10-09-thoughts/</link>
+      <link>https://docs.devboer.com/blog/excretions/2025-10-09-thoughts/</link>
       <pubDate>Thu, 09 Oct 2025 00:00:00 +0000</pubDate>
-      <guid>https://docs.devboer.com/blog/2025-10-09-thoughts/</guid>
+      <guid>https://docs.devboer.com/blog/excretions/2025-10-09-thoughts/</guid>
       <description>&lt;h2 id=&#34;fighting-temptations&#34; class=link_owner&gt;&#xA;  Fighting temptations&#xA;  &lt;a href=&#34;#fighting-temptations&#34; class=&#34;link icon&#34;&gt;&#xA;    &lt;svg&gt;&#xA;      &lt;use xlink:href=&#34;#anchor-link&#34;&gt;&lt;/use&gt;&#xA;    &lt;/svg&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;It is so easy to think buying more storage space will ease my growing pains. I am running out of space since trying out Usenet and the Arr media automation suite. The automation aspect is new to me when I am familiar with peer to peer file sharing.&lt;/p&gt;&#xA;&lt;p&gt;I need to first try a few things before expanding my storage resources.&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;tdarr: standardize my library&lt;/li&gt;&#xA;&lt;li&gt;autopurge: set rules to automate pruning my library.&#xA;&lt;ul&gt;&#xA;&lt;li&gt;daily shows like Late Night with Seth Meyers needs a “if watched, delete” or “if older than 7 days, delete”&lt;/li&gt;&#xA;&lt;li&gt;documentaries, musicals, comic specials… that delete after marked watched&lt;/li&gt;&#xA;&lt;li&gt;capabilities of excluding explicit content eg a documentary I want to rewatch&lt;/li&gt;&#xA;&lt;li&gt;able to hold polls for regular libraries for deletion, triggered manually or based on data “age of file and or numbers of playback”&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;set better sonarr, radarr rules for its automated searches.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Update: I haven’t tried most of these strategies except for a half ass attempt at FileFlows (Tdarr alternative). I passed thru GPU, added it to the flow, but still didn’t appear to be utilized. My file eta was a week or so. I think CPU was still in use. Anyway will see how new build will work.&lt;/p&gt;</description>
     </item>
     <item>
