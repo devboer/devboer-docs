@@ -20,7 +20,7 @@ Find these IDs using ls -l /dev/nv* and ignore &#39;caps&#39; files.">
   <meta property="og:type" content="article">
     <meta property="article:section" content="guides">
     <meta property="article:published_time" content="2024-08-28T01:01:28-05:00">
-    <meta property="article:modified_time" content="2026-01-29T20:24:42-06:00">
+    <meta property="article:modified_time" content="2026-01-29T20:28:54-06:00">
 
   <meta itemprop="name" content="GPU and unprivileged LXC">
   <meta itemprop="description" content="Bind GPU to Unprivileged LXC Tutorials Used: TheOrangeOne.net YouTube Video using above tutorial Mount Storage Karvec suggesting libnvidia-encode/decode on guestOS and learned to use -### corresponding with driver version Proxmox Setup Update Proxmox &amp; Reboot Install pve-headers &amp; build-essentials update-initramfs blacklist free nvidia driver download official nvidia driver chmod &#43;x driver ./run install install 32-bit also ignore other prompts edit modules.d files for loading and conf create a rules file reboot verify driver is working with nvidia-smi also could try lshw -C display this will list driver it should say &#39;nvidia&#39; Create CT with ubuntu compatible with jellyfin (18, 20, 22 not 22.10 work) Do not start CT on creation Edit CT conf file with 1# Allow cgroup access 2lxc.cgroup.devices.allow: c 195:* rwm 3lxc.cgroup.devices.allow: c 243:* rwm 4 5# Pass through device files 6lxc.mount.entry: /dev/nvidia0 dev/nvidia0 none bind,optional,create=file 7lxc.mount.entry: /dev/nvidiactl dev/nvidiactl none bind,optional,create=file 8lxc.mount.entry: /dev/nvidia-uvm dev/nvidia-uvm none bind,optional,create=file 9lxc.mount.entry: /dev/nvidia-modeset dev/nvidia-modeset none bind,optional,create=file 10lxc.mount.entry: /dev/nvidia-uvm-tools dev/nvidia-uvm-tools none bind,optional,create=file ==&#39;cgroup access&#39;== part corresponds with the character files below in ==&#39;device files&#39;==
@@ -28,7 +28,7 @@ Find these IDs using ls -l /dev/nv* and ignore &#39;caps&#39; files.">
 Also you can write in more IDs if you notice it changing on reboots to make certain you don&#39;t lose passthrough access.
 Find these IDs using ls -l /dev/nv* and ignore &#39;caps&#39; files.">
   <meta itemprop="datePublished" content="2024-08-28T01:01:28-05:00">
-  <meta itemprop="dateModified" content="2026-01-29T20:24:42-06:00">
+  <meta itemprop="dateModified" content="2026-01-29T20:28:54-06:00">
   <meta itemprop="wordCount" content="817">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="GPU and unprivileged LXC">
