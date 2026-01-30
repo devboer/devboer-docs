@@ -18,14 +18,14 @@ The Wiring Struggle Wiring this build has been a tedious exercise in patience. B
   <meta property="og:type" content="article">
     <meta property="article:section" content="blog">
     <meta property="article:published_time" content="2026-01-06T00:00:00+00:00">
-    <meta property="article:modified_time" content="2026-01-29T21:04:01-06:00">
+    <meta property="article:modified_time" content="2026-01-29T21:10:00-06:00">
 
   <meta itemprop="name" content="New Server Part 3">
   <meta itemprop="description" content="Here is a cleaned-up version of your blog post. I’ve organized it into logical sections to make the technical details easier to follow and added a bit of &#34;hardware enthusiast&#34; polish to the tone.
 The Wiring Struggle Wiring this build has been a tedious exercise in patience. Between constant second-guessing and severe space constraints—particularly the tight gap between the PSU and the first hard drive bay—every millimeter mattered.">
   <meta itemprop="datePublished" content="2026-01-06T00:00:00+00:00">
-  <meta itemprop="dateModified" content="2026-01-29T21:04:01-06:00">
-  <meta itemprop="wordCount" content="535">
+  <meta itemprop="dateModified" content="2026-01-29T21:10:00-06:00">
+  <meta itemprop="wordCount" content="593">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="New Server Part 3">
   <meta name="twitter:description" content="Here is a cleaned-up version of your blog post. I’ve organized it into logical sections to make the technical details easier to follow and added a bit of &#34;hardware enthusiast&#34; polish to the tone.
@@ -196,7 +196,7 @@ After a &quot;spirited&quot; dispute with the eBay seller, eBay eventually stepp
       <tr>
           <td><strong>GPU</strong></td>
           <td>Integrated Radeon Graphics</td>
-          <td>iGPU</td>
+          <td>See table below</td>
       </tr>
       <tr>
           <td><strong>Motherboard</strong></td>
@@ -223,6 +223,11 @@ After a &quot;spirited&quot; dispute with the eBay seller, eBay eventually stepp
           <td>4x Noctua NF-A8 PWM</td>
           <td>80mm Quiet Fans</td>
       </tr>
+      <tr>
+          <td><strong>Network</strong></td>
+          <td>2.5G builtin + Dual 2.5G i226 Network Card</td>
+          <td>Management + Container traffic</td>
+      </tr>
   </tbody>
 </table>
 <h3 id="storage-configuration" class=link_owner>
@@ -233,42 +238,12 @@ After a &quot;spirited&quot; dispute with the eBay seller, eBay eventually stepp
     </svg>
   </a>
 </h3>
-<table>
-  <thead>
-      <tr>
-          <th>Purpose</th>
-          <th>Drive</th>
-          <th>Capacity</th>
-          <th>Config</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td><strong>OS Boot</strong></td>
-          <td>TEAMGROUP AX2 2.5&quot; SATA</td>
-          <td>512GB</td>
-          <td>Single Drive</td>
-      </tr>
-      <tr>
-          <td><strong>Apps Pool</strong></td>
-          <td>2x Silicon Power NVMe M.2</td>
-          <td>1TB Total</td>
-          <td>ZFS Mirror (apps-pool)</td>
-      </tr>
-      <tr>
-          <td><strong>Media Pool</strong></td>
-          <td>2x MDD Enterprise 7200 RPM</td>
-          <td>32TB Total</td>
-          <td>ZFS Mirror (media-pool)</td>
-      </tr>
-      <tr>
-          <td><strong>Backup Pool</strong></td>
-          <td>1x WD Red Plus / 1x Seagate Exos</td>
-          <td>8TB Total</td>
-          <td>ZFS Mirror (backup-pool)</td>
-      </tr>
-  </tbody>
-</table>
+<p>| Purpose | Drive | Raw Capacity | Usable Capacity | Config |
+| --- | --- | --- | --- |
+| <strong>OS Boot</strong> | TEAMGROUP AX2 2.5&quot; SATA | 512GB | 512GB | Single Drive |
+| <strong>Apps Pool</strong> | 2x Silicon Power NVMe M.2 | 1TB | 512GB | ZFS Mirror (apps-pool) |
+| <strong>Media Pool</strong> | 2x MDD Enterprise 7200 RPM | 32TB | 16TB | ZFS Mirror (media-pool) |
+| <strong>Backup Pool</strong> | 1x WD Red Plus / 1x Seagate Exos | 8TB | 4TB | ZFS Mirror (backup-pool) |</p>
 <h3 id="igpu-abilities" class=link_owner>
   iGPU Abilities
   <a href="#igpu-abilities" class="link icon">
