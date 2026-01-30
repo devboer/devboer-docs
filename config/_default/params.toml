@@ -3,6 +3,8 @@ docSections = ["docs", "guides"]
 
 uniqueHomePage = true # change to false to add sidebar to homepage
 
+mobileNavigation = "right" # Mobile nav menu will open to the left of the screen.
+
 blogDir = "blog" # can be posts, blog e.t.c
 
 repo = "https://github.com/devboer/devboer-docs"
