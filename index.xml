@@ -51,23 +51,23 @@
     </item>
     <item>
       <title>New Server Part 3</title>
-      <link>https://docs.devboer.com/blog/2026-01-06-thoughts/</link>
+      <link>https://docs.devboer.com/blog/home-server-2026/2026-01-06-thoughts/</link>
       <pubDate>Tue, 06 Jan 2026 00:00:00 +0000</pubDate>
-      <guid>https://docs.devboer.com/blog/2026-01-06-thoughts/</guid>
+      <guid>https://docs.devboer.com/blog/home-server-2026/2026-01-06-thoughts/</guid>
       <description>&lt;h2 id=&#34;the-wiring-struggle&#34; class=link_owner&gt;&#xA;  The Wiring Struggle&#xA;  &lt;a href=&#34;#the-wiring-struggle&#34; class=&#34;link icon&#34;&gt;&#xA;    &lt;svg&gt;&#xA;      &lt;use xlink:href=&#34;#anchor-link&#34;&gt;&lt;/use&gt;&#xA;    &lt;/svg&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Wiring this build has been a tedious exercise in patience. Between constant second-guessing and severe space constraints—particularly the tight gap between the PSU and the first hard drive bay—every millimeter mattered.&lt;/p&gt;&#xA;&lt;h3 id=&#34;layered-protection&#34; class=link_owner&gt;&#xA;  Layered Protection&#xA;  &lt;a href=&#34;#layered-protection&#34; class=&#34;link icon&#34;&gt;&#xA;    &lt;svg&gt;&#xA;      &lt;use xlink:href=&#34;#anchor-link&#34;&gt;&lt;/use&gt;&#xA;    &lt;/svg&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/h3&gt;&#xA;&lt;p&gt;I used a dual-layer taping method for the ATX cable run:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Base Layer:&lt;/strong&gt; Super88 electrical tape to protect against sharp solder spikes.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Top Layer:&lt;/strong&gt; Kapton heat tape, rated for 400–500°F, providing a secondary thermal barrier over the Super88 (which is rated for ~200°F).&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;rerouting-and-refinement&#34; class=link_owner&gt;&#xA;  Rerouting and Refinement&#xA;  &lt;a href=&#34;#rerouting-and-refinement&#34; class=&#34;link icon&#34;&gt;&#xA;    &lt;svg&gt;&#xA;      &lt;use xlink:href=&#34;#anchor-link&#34;&gt;&lt;/use&gt;&#xA;    &lt;/svg&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/h3&gt;&#xA;&lt;p&gt;Initially, I tried to utilize every bit of negative space, but it backfired. The CPU power cable bunched up near the USB 3.0 and panel headers, creating enough pressure that I worried it might lift the motherboard.&lt;/p&gt;</description>
     </item>
     <item>
       <title>New Server Part 2</title>
-      <link>https://docs.devboer.com/blog/2026-01-05-thoughts/</link>
+      <link>https://docs.devboer.com/blog/home-server-2026/2026-01-05-thoughts/</link>
       <pubDate>Mon, 05 Jan 2026 00:00:00 +0000</pubDate>
-      <guid>https://docs.devboer.com/blog/2026-01-05-thoughts/</guid>
+      <guid>https://docs.devboer.com/blog/home-server-2026/2026-01-05-thoughts/</guid>
       <description>&lt;h2 id=&#34;recovery--build-phases&#34; class=link_owner&gt;&#xA;  Recovery &amp;amp; Build Phases&#xA;  &lt;a href=&#34;#recovery--build-phases&#34; class=&#34;link icon&#34;&gt;&#xA;    &lt;svg&gt;&#xA;      &lt;use xlink:href=&#34;#anchor-link&#34;&gt;&lt;/use&gt;&#xA;    &lt;/svg&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;h3 id=&#34;the-build-log-trials-tribulations-and-zfs-ambitions&#34; class=link_owner&gt;&#xA;  The Build Log: Trials, Tribulations, and ZFS Ambitions&#xA;  &lt;a href=&#34;#the-build-log-trials-tribulations-and-zfs-ambitions&#34; class=&#34;link icon&#34;&gt;&#xA;    &lt;svg&gt;&#xA;      &lt;use xlink:href=&#34;#anchor-link&#34;&gt;&lt;/use&gt;&#xA;    &lt;/svg&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/h3&gt;&#xA;&lt;p&gt;Building a PC is rarely a straight line; for me, it’s been a series of “one step forward, two steps back.” Driven by a mix of caffeine-fueled excitement and a touch of disorganized chaos, I’ve seated this motherboard three times now—and I’m still not quite done.&lt;/p&gt;&#xA;&lt;h3 id=&#34;the-learning-curve&#34; class=link_owner&gt;&#xA;  The Learning Curve&#xA;  &lt;a href=&#34;#the-learning-curve&#34; class=&#34;link icon&#34;&gt;&#xA;    &lt;svg&gt;&#xA;      &lt;use xlink:href=&#34;#anchor-link&#34;&gt;&lt;/use&gt;&#xA;    &lt;/svg&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/h3&gt;&#xA;&lt;p&gt;The first attempt was a classic mistake: I secured the board only to realize the &lt;strong&gt;I/O shield&lt;/strong&gt; was still sitting on the table. After a brief struggle with those stubborn metal tabs, I finally coaxed it into place.&lt;/p&gt;</description>
     </item>
     <item>
       <title>New Server Part 1</title>
-      <link>https://docs.devboer.com/blog/2025-12-29-thoughts/</link>
+      <link>https://docs.devboer.com/blog/home-server-2026/2025-12-29-thoughts/</link>
       <pubDate>Mon, 29 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>https://docs.devboer.com/blog/2025-12-29-thoughts/</guid>
+      <guid>https://docs.devboer.com/blog/home-server-2026/2025-12-29-thoughts/</guid>
       <description>&lt;h2 id=&#34;a-different-temptation-won&#34; class=link_owner&gt;&#xA;  A Different Temptation Won&#xA;  &lt;a href=&#34;#a-different-temptation-won&#34; class=&#34;link icon&#34;&gt;&#xA;    &lt;svg&gt;&#xA;      &lt;use xlink:href=&#34;#anchor-link&#34;&gt;&lt;/use&gt;&#xA;    &lt;/svg&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;It all started, really, with two bad habits meeting at the worst possible time: tight cash flow and terrible digital hygiene. I don’t back up the way I should, and I don’t have that automatic reflex of, &lt;em&gt;“Hey, maybe back this container up before smashing the update button.”&lt;/em&gt; Now I’m sitting here with my main Proxmox node on life support, bootable recovery USB in hand, trying to coax it back to life.&lt;/p&gt;</description>
     </item>
     <item>
